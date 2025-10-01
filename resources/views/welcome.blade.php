@@ -49,73 +49,350 @@
                 <a href="#" class="hover:text-pink-300 transition">Register</a>
             </nav>
         </header>
-      <main class="flex-1 flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
+      <main
+  class="flex-1 flex flex-col justify-center items-center text-center px-6 relative overflow-hidden bg-gradient-to-b from-transparent to-black/40"
+>
+  {{-- Preloader (you already had this idea) --}}
+  <div id="preloader" class="fixed inset-0 bg-white flex items-center justify-center z-50">
+    <img src="{{ asset('images/logo.png') }}"
+         alt="Logo"
+         class="w-16 h-16 rounded-full animate-spin-slow">
+  </div>
 
-    <!-- Hero Section -->
-    <div class="relative w-full max-w-4xl flex flex-col md:flex-row items-center justify-center gap-6 mt-12">
-        <div class="flex-1">
-            <h2 class="text-4xl md:text-6xl font-extrabold mb-4">
-                Welcome to <span class="text-pink-400">Mini-Shop</span>
-            </h2>
-            <p id="hero-text" class="text-lg text-gray-200 max-w-xl mb-6 transition-all duration-500">
-                Shop smart. Shop mini.
-            </p>
-            <a href="" class="px-6 py-3 bg-pink-500 text-white rounded-full shadow-md hover:bg-pink-400 transition">
-                Get Started
+  {{-- Hero / Intro --}}
+  <section class="w-full max-w-6xl mx-auto py-12 lg:py-20 relative">
+    <div class="flex flex-col lg:flex-row items-center gap-8">
+      <div class="flex-1 text-left">
+        <p class="uppercase text-sm tracking-widest text-pink-300 mb-2">Welcome to</p>
+        <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">
+          MINI <span class="text-pink-400">SHOP</span> — Curated tech & treats
+        </h2>
+
+        <p class="mt-4 text-gray-200/90 max-w-xl">
+          Mini Shop Lite is a sleek demo store built for your Laravel Full-Stack assessment.
+          Browse curated products, add to cart, checkout, and try our API. Designed to look
+          beautiful on both mobile and desktop — with smooth micro-animations, sliding headlines,
+          and an immersive product carousel.
+        </p>
+
+        {{-- Sliding / bouncing animated words (continuous) --}}
+        <div class="mt-6">
+          <div class="overflow-hidden">
+            <div class="sliding-words whitespace-normal md:whitespace-nowrap text-lg md:text-xl font-semibold">
+              <span class="inline-block mr-8">Fast checkout •</span>
+              <span class="inline-block mr-8">Secure checkout •</span>
+              <span class="inline-block mr-8">Mobile-first design •</span>
+            </div>
+          </div>
+
+          <div class="mt-4 flex items-center gap-3">
+            <a href="{{ url('/register') }}"
+               class="inline-flex items-center gap-2 bg-pink-400/95 text-black px-4 py-2 rounded-full font-medium shadow-lg hover:scale-[1.02] transform transition">
+              Get started
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
             </a>
+
+            <a href="#products" class="text-sm text-gray-300 hover:text-white transition">Browse products</a>
+          </div>
         </div>
-        <div class="flex-1">
-            <img src="{{ asset('images/happy.jpg') }}" alt="Be happy" class="rounded-xl shadow-lg object-cover w-full md:w-80 animate-bounce-slow">
+      </div>
+
+      <div class="flex-1 hidden lg:flex justify-center">
+        <div class="w-72 h-72 rounded-2xl bg-gradient-to-tr from-white/5 to-white/3 p-6 backdrop-blur-md border border-white/5 flex items-center justify-center">
+          <img src="{{ asset('images/happy.jpg') }}" alt="Happy" class="rounded-xl object-cover w-full h-full shadow-xl">
         </div>
+      </div>
+    </div>
+  </section>
+
+  {{-- Product carousel / grid --}}
+  <section id="products" class="w-full max-w-6xl mx-auto py-6 lg:py-12">
+    <div class="flex items-center justify-between mb-4 px-2">
+      <h3 class="text-xl md:text-2xl font-bold">Featured picks</h3>
+      <div class="hidden md:flex items-center gap-2">
+        <button id="prevBtn" class="p-2 rounded-full bg-white/5 hover:bg-white/10 transition">
+          ‹
+        </button>
+        <button id="nextBtn" class="p-2 rounded-full bg-white/5 hover:bg-white/10 transition">
+          ›
+        </button>
+      </div>
     </div>
 
-    <!-- Products Section -->
-    <section class="mt-12 w-full max-w-6xl flex flex-wrap justify-center gap-6">
-        @foreach ([
-            ['img' => 'shoe.jpg', 'name' => 'Reebok', 'price' => '999.99', 'rating' => 5],
-            ['img' => 'black airbuds sony.png', 'name' => 'Sony Airbuds', 'price' => '4599.99', 'rating' => 5],
-            ['img' => 'choco.jpeg', 'name' => 'Chocolate Bar', 'price' => '299.99', 'rating' => 5],
-            ['img' => 'pc.jpeg', 'name' => 'MacBook', 'price' => '40599.99', 'rating' => 5],
-            ['img' => 'cannon camera.png', 'name' => 'Canon Camera', 'price' => '29000.99', 'rating' => 4],
-            ['img' => 'fitness watch.png', 'name' => 'Fitness Watch', 'price' => '999.99', 'rating' => 4.5],
-            ['img' => 'white headphones.png', 'name' => 'White Headphones', 'price' => '499.99', 'rating' => 5],
-            ['img' => 'shoe.jpg', 'name' => 'Sport Shoes', 'price' => '9499.99', 'rating' => 4]
-        ] as $product)
-            <div class="bg-white dark:bg-gray-900 w-56 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition relative flex flex-col">
-                <img src="{{ asset('images/'.$product['img']) }}" alt="{{ $product['name'] }}" class="w-full h-40 object-cover">
-                <div class="p-4 flex flex-col flex-1 justify-between">
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ $product['name'] }}</h3>
-                        <p class="text-pink-500 font-bold mt-1">Kes {{ $product['price'] }}</p>
-                        <div class="flex items-center mt-2">
-                            @for ($i = 1; $i <= 5; $i++)
-                                @if ($i <= floor($product['rating']))
-                                    <span class="text-yellow-400">&#9733;</span>
-                                @elseif ($i - $product['rating'] < 1)
-                                    <span class="text-yellow-400">&#9733;</span>
-                                @else
-                                    <span class="text-gray-300">&#9733;</span>
-                                @endif
-                            @endfor
-                        </div>
-                    </div>
-                    <a href="#" class="mt-4 px-4 py-2 bg-blue-900 text-white rounded-full text-center hover:bg-blue-800 transition">
-                        Get Now
-                    </a>
-                </div>
+    {{-- Desktop: show carousel row; Mobile: full-width slideshow --}}
+    <div id="carousel" class="relative">
+      <div id="cardsWrapper" class="flex gap-6 overflow-hidden px-2 touch-pan-y">
+        {{-- Product Card Template (JS will duplicate / manage) --}}
+        {{-- We'll provide initial markup for each product based on provided images --}}
+        <article class="product-card min-w-[260px] max-w-[260px] rounded-2xl bg-gradient-to-br from-white/5 to-white/3 p-4 backdrop-blur-sm border border-white/5 shadow-xl transform transition-all">
+          <div class="relative">
+            <div class="ribbon absolute left-3 top-3 text-xs font-semibold px-2 py-1 rounded-full bg-pink-400 text-black">-20%</div>
+            <img src="{{ asset('images/black airbuds sony.png') }}" alt="Black Airbuds" class="w-full h-32 object-contain rounded-xl">
+          </div>
+
+          <div class="mt-3 text-left">
+            <h4 class="font-semibold">Black Airbuds (Sony)</h4>
+            <p class="text-xs text-gray-300 mt-1">Wireless • Noise-cancelling</p>
+
+            <div class="mt-3 flex items-center justify-between">
+              <div class="text-left">
+                <div class="text-sm font-bold">KES 7,499</div>
+                <div class="text-xs text-gray-400 line-through">KES 9,299</div>
+              </div>
+
+              <div class="rating text-yellow-400" aria-hidden>
+                ★★★★☆
+              </div>
             </div>
-        @endforeach
-    </section>
+          </div>
+        </article>
+
+        <article class="product-card min-w-[260px] max-w-[260px] rounded-2xl bg-gradient-to-br from-white/5 to-white/3 p-4 backdrop-blur-sm border border-white/5 shadow-xl transform transition-all">
+          <div class="relative">
+            <div class="ribbon absolute left-3 top-3 text-xs font-semibold px-2 py-1 rounded-full bg-pink-400 text-black">-15%</div>
+            <img src="{{ asset('images/cannon camera.png') }}" alt="Cannon Camera" class="w-full h-32 object-contain rounded-xl">
+          </div>
+
+          <div class="mt-3 text-left">
+            <h4 class="font-semibold">Cannon XC100</h4>
+            <p class="text-xs text-gray-300 mt-1">Capture moments</p>
+
+            <div class="mt-3 flex items-center justify-between">
+              <div class="text-left">
+                <div class="text-sm font-bold">KES 24,999</div>
+                <div class="text-xs text-gray-400 line-through">KES 29,499</div>
+              </div>
+
+              <div class="rating text-yellow-400" aria-hidden>
+                ★★★★★
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card min-w-[260px] max-w-[260px] rounded-2xl bg-gradient-to-br from-white/5 to-white/3 p-4 backdrop-blur-sm border border-white/5 shadow-xl transform transition-all">
+          <div class="relative">
+            <div class="ribbon absolute left-3 top-3 text-xs font-semibold px-2 py-1 rounded-full bg-pink-400 text-black">-10%</div>
+            <img src="{{ asset('images/fitness watch.png') }}" alt="Fitness Watch" class="w-full h-32 object-contain rounded-xl">
+          </div>
+
+          <div class="mt-3 text-left">
+            <h4 class="font-semibold">Fitness Watch</h4>
+            <p class="text-xs text-gray-300 mt-1">24/7 heart monitoring</p>
+
+            <div class="mt-3 flex items-center justify-between">
+              <div class="text-left">
+                <div class="text-sm font-bold">KES 5,199</div>
+                <div class="text-xs text-gray-400 line-through">KES 5,999</div>
+              </div>
+
+              <div class="rating text-yellow-400" aria-hidden>
+                ★★★★☆
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card min-w-[260px] max-w-[260px] rounded-2xl bg-gradient-to-br from-white/5 to-white/3 p-4 backdrop-blur-sm border border-white/5 shadow-xl transform transition-all">
+          <div class="relative">
+            <div class="ribbon absolute left-3 top-3 text-xs font-semibold px-2 py-1 rounded-full bg-pink-400 text-black">-8%</div>
+            <img src="{{ asset('images/pc.jpeg') }}" alt="Macbook PC" class="w-full h-32 object-contain rounded-xl">
+          </div>
+
+          <div class="mt-3 text-left">
+            <h4 class="font-semibold">Macbook-like PC</h4>
+            <p class="text-xs text-gray-300 mt-1">Lightweight • Powerful</p>
+
+            <div class="mt-3 flex items-center justify-between">
+              <div class="text-left">
+                <div class="text-sm font-bold">KES 149,999</div>
+                <div class="text-xs text-gray-400 line-through">KES 159,999</div>
+              </div>
+
+              <div class="rating text-yellow-400" aria-hidden>
+                ★★★★★
+              </div>
+            </div>
+          </div>
+        </article>
+
+        {{-- LAST SPECIAL CARD: Shoe (blurred background, CTA overlay) --}}
+        <article id="specialCard" class="product-card min-w-[300px] max-w-[300px] rounded-2xl relative overflow-hidden">
+          <img src="{{ asset('images/shoe.jpg') }}" alt="Shoe" class="w-full h-60 object-cover filter blur-sm scale-105">
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+            <div class="backdrop-blur-md bg-black/40 p-4 rounded-xl">
+              <h4 class="text-2xl font-bold">See more styles</h4>
+              <p class="text-sm text-gray-200 mt-2">Exclusive drops & limited offers</p>
+              <a href="{{ url('/register') }}" class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-400 text-black font-semibold">
+                Sign up to view
+                <span class="text-xl font-bold">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      {{-- Mobile arrows bottom --}}
+      <div class="md:hidden absolute left-4 right-4 bottom-2 flex justify-between items-center px-2">
+        <button id="prevMobile" class="p-2 rounded-full bg-white/5">‹</button>
+        <button id="nextMobile" class="p-2 rounded-full bg-white/5">›</button>
+      </div>
+    </div>
+  </section>
+
+  {{-- Happy users gallery (small) --}}
+  <section class="w-full max-w-6xl mx-auto py-6">
+    <h4 class="text-lg font-bold mb-3">Happy customers</h4>
+    <div class="grid grid-cols-3 md:grid-cols-6 gap-3">
+      <img src="{{ asset('images/happy1.jpeg') }}" alt="happy1" class="w-full h-32 object-cover rounded-lg shadow-sm">
+      <img src="{{ asset('images/happy2.jpg') }}" alt="happy2" class="w-full h-32 object-cover rounded-lg shadow-sm hidden md:block">
+      <img src="{{ asset('images/happy3.jpeg') }}" alt="happy3" class="w-full h-32 object-cover rounded-lg shadow-sm">
+      <img src="{{ asset('images/happy4.jpeg') }}" alt="happy4" class="w-full h-32 object-cover rounded-lg shadow-sm hidden md:block">
+      <img src="{{ asset('images/happy5.jpeg') }}" alt="happy5" class="w-full h-32 object-cover rounded-lg shadow-sm hidden md:block">
+      <img src="{{ asset('images/happy.jpg') }}" alt="happy" class="w-full h-32 object-cover rounded-lg shadow-sm">
+      <div class="col-span-3 text-left mt-2 md:mt-0 text-xs text-gray-300">
+        Loved by people who want quick shopping and clean UI. Try the cart & checkout flow.
+      </div>
+    </div>
+  </section>
+
+  {{-- Minimal footer CTA --}}
+  <div class="w-full max-w-6xl mx-auto py-8 flex justify-center">
+    <a href="{{ url('/register') }}" class="px-6 py-3 rounded-full bg-pink-400 text-black font-semibold shadow-lg hover:scale-105 transition">Create an account — it’s free</a>
+  </div>
+
+  {{-- Styles & small scripts (keep them at bottom) --}}
+  <style>
+  /* Custom keyframes and small component styles */
+  @keyframes slide-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .sliding-words {
+    display: inline-block;
+    animation: slide-left 12s linear infinite;
+  }
+
+  .product-card:hover { transform: translateY(-6px) scale(1.01); }
+  .animate-spin-slow { animation: spin 1.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Responsive tweaks */
+  @media (max-width: 768px) {
+    .product-card { min-width: 100%; max-width: 100%; }
+    /* remove scrollbar track/slider on mobile */
+    #cardsWrapper { overflow-x: hidden; }
+    #specialCard { min-width: 90%; max-width: 90%; }
+  }
+
+  .ribbon { box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
+
+  #preloader.hidden { opacity: 0; pointer-events: none; transition: opacity 400ms ease; }
+</style>
+
+
+  <script>
+    // --- Preloader hide ---
+    window.addEventListener('load', () => {
+      const pre = document.getElementById('preloader');
+      pre.classList.add('hidden');
+      setTimeout(() => pre.remove(), 600);
+    });
+
+    // --- Carousel logic: auto-rotate and manual nav ---
+    (function () {
+      const wrapper = document.getElementById('cardsWrapper');
+      const cards = Array.from(wrapper.querySelectorAll('.product-card'));
+      let index = 0;
+      const cardWidthDesktop = cards[0]?.offsetWidth + 24 || 300;
+      let interval = null;
+      const rotateDelay = 3500;
+
+      function scrollToIndex(i) {
+        const card = cards[i];
+        if (!card) return;
+        const parentRect = wrapper.getBoundingClientRect();
+        const cardRect = card.getBoundingClientRect();
+        const currentScroll = wrapper.scrollLeft;
+        const target = currentScroll + (cardRect.left - parentRect.left) - 12;
+        wrapper.scrollTo({ left: target, behavior: 'smooth' });
+      }
+
+      function next() {
+        index = (index + 1) % cards.length;
+        scrollToIndex(index);
+      }
+      function prev() {
+        index = (index - 1 + cards.length) % cards.length;
+        scrollToIndex(index);
+      }
+
+      // start automatic rotation on desktop; on mobile we still auto but respect user scroll
+      function startRotate() {
+        if (interval) clearInterval(interval);
+        interval = setInterval(next, rotateDelay);
+      }
+
+      // Buttons
+      document.getElementById('nextBtn')?.addEventListener('click', () => { next(); startRotate(); });
+      document.getElementById('prevBtn')?.addEventListener('click', () => { prev(); startRotate(); });
+      document.getElementById('nextMobile')?.addEventListener('click', () => { next(); startRotate(); });
+      document.getElementById('prevMobile')?.addEventListener('click', () => { prev(); startRotate(); });
+
+      // Touch swipe for mobile
+      let startX = 0;
+      let isDown = false;
+      wrapper.addEventListener('touchstart', (e) => {
+        isDown = true;
+        startX = e.touches[0].clientX;
+        if (interval) clearInterval(interval);
+      }, {passive:true});
+      wrapper.addEventListener('touchmove', () => {}, {passive:true});
+      wrapper.addEventListener('touchend', (e) => {
+        if (!isDown) return;
+        const endX = e.changedTouches[0].clientX;
+        const diff = endX - startX;
+        if (Math.abs(diff) > 40) {
+          if (diff < 0) next();
+          else prev();
+        }
+        isDown = false;
+        startRotate();
+      });
+
+      // Pause auto-rotate while hovering on desktop
+      wrapper.addEventListener('mouseover', () => { if (interval) clearInterval(interval); });
+      wrapper.addEventListener('mouseleave', () => startRotate());
+
+      // Kick off
+      startRotate();
+
+      // periodically swap some product data (subtle refreshing)
+      setInterval(() => {
+        // move first card to the end (keeps view fresh)
+        const first = wrapper.querySelector('.product-card:first-child');
+        if (first && wrapper.children.length > 1) wrapper.appendChild(first);
+      }, 12000);
+    })();
+  </script>
 </main>
 
-<!-- Footer -->
-<footer class="py-6 text-center text-xs text-gray-400 flex flex-col md:flex-row justify-center items-center gap-4">
-    <span>© {{ date('Y') }} Mini-Shop Lite — All rights reserved.</span>
-    <div class="flex items-center gap-4 mt-2 md:mt-0">
-        <img src="{{ asset('images/mastercard.png') }}" alt="Mastercard" class="h-6">
-        <img src="{{ asset('images/mpesa.png') }}" alt="M-Pesa" class="h-6">
-    </div>
-</footer>
+
+
+
+        <!-- Footer -->
+        <footer class="py-6 text-center text-xs text-gray-400 flex flex-col md:flex-row justify-center items-center gap-4 bg-black">
+            <span>© {{ date('Y') }} Mini-Shop Lite — All rights reserved. 
+                <span class="hidden md:inline">•</span>
+            </span>
+            <div class="flex items-center gap-4 mt-2 md:mt-0">
+                <img src="{{ asset('images/mastercard.png') }}" alt="Mastercard" class="h-6">
+                <img src="{{ asset('images/mpesa.jpeg') }}" alt="M-Pesa" class="h-6">
+                <img src="{{ asset('images/stripe.png') }}" alt="Stripe" class="h-6">
+            </div>
+        </footer>
 
     </div>
 </body>

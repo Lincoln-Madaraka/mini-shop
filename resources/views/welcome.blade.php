@@ -25,50 +25,98 @@
         <header class="w-full px-6 py-4 flex justify-between items-center">
             <!-- Logo -->
             <div class="flex items-center space-x-2">
+            <a href="{{ url('/') }}" class="sm:hidden flex items-center space-x-2">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-10 h-10 rounded-full">
 
-                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-10 h-10 sm:hidden">
-
-                <div class="hidden sm:flex flex-col leading-none">
-                    <span class="text-xs tracking-widest font-bold text-pink-400">mini</span>
+                <!--My Logo Text -->
+                <div class="flex flex-col space-y-0">
+                    <span class="text-xs tracking-widest font-bold text-pink-400">MINI</span>
+                    <h1 class="text-2xl font-bold text-white">SHOP</h1>
+                </div>
+            </a>
+                <a href="{{ url('/') }}" class="hidden sm:flex flex-col leading-none">
+                    <span class="text-xs tracking-widest font-bold text-pink-400">MINI</span>
                     <h1 class="text-2xl font-bold text-white flex items-center">
                         SH
                         <img src="{{ asset('images/logo.png') }}" alt="O" class="w-6 h-6 mx-1">
                         P
                     </h1>
-                </div>
+                </a>
             </div>
 
-            <!-- Nav -->
             <nav class="flex space-x-6 text-sm font-medium">
                 <a href="#" class="hover:text-pink-300 transition">Login</a>
                 <a href="#" class="hover:text-pink-300 transition">Register</a>
             </nav>
         </header>
+      <main class="flex-1 flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
 
-        <!-- Main -->
-        <main class="flex-1 flex flex-col justify-center items-center text-center px-6">
+    <!-- Hero Section -->
+    <div class="relative w-full max-w-4xl flex flex-col md:flex-row items-center justify-center gap-6 mt-12">
+        <div class="flex-1">
             <h2 class="text-4xl md:text-6xl font-extrabold mb-4">
                 Welcome to <span class="text-pink-400">Mini-Shop</span>
             </h2>
-            <p class="text-lg text-gray-200 max-w-xl">
-                The lightest and most aesthetic shopping experience.  
+            <p id="hero-text" class="text-lg text-gray-200 max-w-xl mb-6 transition-all duration-500">
                 Shop smart. Shop mini.
             </p>
+            <a href="" class="px-6 py-3 bg-pink-500 text-white rounded-full shadow-md hover:bg-pink-400 transition">
+                Get Started
+            </a>
+        </div>
+        <div class="flex-1">
+            <img src="{{ asset('images/happy.jpg') }}" alt="Be happy" class="rounded-xl shadow-lg object-cover w-full md:w-80 animate-bounce-slow">
+        </div>
+    </div>
 
-            <div class="mt-8 flex space-x-4">
-                <a href="#" class="px-6 py-3 bg-pink-500 text-white rounded-full shadow-md hover:bg-pink-400 transition">
-                    Get Started
-                </a>
-                <a href="#" class="px-6 py-3 border border-white rounded-full hover:bg-white hover:text-blue-900 transition">
-                    Sign In
-                </a>
+    <!-- Products Section -->
+    <section class="mt-12 w-full max-w-6xl flex flex-wrap justify-center gap-6">
+        @foreach ([
+            ['img' => 'shoe.jpg', 'name' => 'Reebok', 'price' => '999.99', 'rating' => 5],
+            ['img' => 'black airbuds sony.png', 'name' => 'Sony Airbuds', 'price' => '4599.99', 'rating' => 5],
+            ['img' => 'choco.jpeg', 'name' => 'Chocolate Bar', 'price' => '299.99', 'rating' => 5],
+            ['img' => 'pc.jpeg', 'name' => 'MacBook', 'price' => '40599.99', 'rating' => 5],
+            ['img' => 'cannon camera.png', 'name' => 'Canon Camera', 'price' => '29000.99', 'rating' => 4],
+            ['img' => 'fitness watch.png', 'name' => 'Fitness Watch', 'price' => '999.99', 'rating' => 4.5],
+            ['img' => 'white headphones.png', 'name' => 'White Headphones', 'price' => '499.99', 'rating' => 5],
+            ['img' => 'shoe.jpg', 'name' => 'Sport Shoes', 'price' => '9499.99', 'rating' => 4]
+        ] as $product)
+            <div class="bg-white dark:bg-gray-900 w-56 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition relative flex flex-col">
+                <img src="{{ asset('images/'.$product['img']) }}" alt="{{ $product['name'] }}" class="w-full h-40 object-cover">
+                <div class="p-4 flex flex-col flex-1 justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ $product['name'] }}</h3>
+                        <p class="text-pink-500 font-bold mt-1">Kes {{ $product['price'] }}</p>
+                        <div class="flex items-center mt-2">
+                            @for ($i = 1; $i <= 5; $i++)
+                                @if ($i <= floor($product['rating']))
+                                    <span class="text-yellow-400">&#9733;</span>
+                                @elseif ($i - $product['rating'] < 1)
+                                    <span class="text-yellow-400">&#9733;</span>
+                                @else
+                                    <span class="text-gray-300">&#9733;</span>
+                                @endif
+                            @endfor
+                        </div>
+                    </div>
+                    <a href="#" class="mt-4 px-4 py-2 bg-blue-900 text-white rounded-full text-center hover:bg-blue-800 transition">
+                        Get Now
+                    </a>
+                </div>
             </div>
-        </main>
+        @endforeach
+    </section>
+</main>
 
-        <!-- Footer -->
-        <footer class="py-6 text-center text-xs text-gray-400">
-            © {{ date('Y') }} Mini-Shop Lite — All rights reserved.
-        </footer>
+<!-- Footer -->
+<footer class="py-6 text-center text-xs text-gray-400 flex flex-col md:flex-row justify-center items-center gap-4">
+    <span>© {{ date('Y') }} Mini-Shop Lite — All rights reserved.</span>
+    <div class="flex items-center gap-4 mt-2 md:mt-0">
+        <img src="{{ asset('images/mastercard.png') }}" alt="Mastercard" class="h-6">
+        <img src="{{ asset('images/mpesa.png') }}" alt="M-Pesa" class="h-6">
+    </div>
+</footer>
+
     </div>
 </body>
 

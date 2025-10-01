@@ -25,10 +25,9 @@
         <header class="w-full px-6 py-4 flex justify-between items-center">
             <!-- Logo -->
             <div class="flex items-center space-x-2">
-                <!-- Mobile logo -->
-                <img src="{{ asset('logo.png') }}" alt="Logo" class="w-10 h-10 sm:hidden">
 
-                <!-- Desktop logo text -->
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-10 h-10 sm:hidden">
+
                 <div class="hidden sm:flex flex-col leading-none">
                     <span class="text-xs tracking-widest font-bold text-pink-400">mini</span>
                     <h1 class="text-2xl font-bold text-white flex items-center">

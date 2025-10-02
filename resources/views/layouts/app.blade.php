@@ -16,8 +16,9 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-           <header class="w-full px-6 py-4 flex justify-between items-center bg-gray-800">
-            <!-- Logo -->
+           @guest
+        <!-- Only show this header if user is not logged in -->
+        <header class="w-full px-6 py-4 flex justify-between items-center bg-gray-800">
             <div class="flex items-center space-x-2">
                 <a href="{{ url('/') }}" class="sm:hidden flex items-center space-x-2">
                     <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-10 h-10 rounded-full">
@@ -39,19 +40,22 @@
                 </a>
             </div>
 
-            <!-- Navigation -->
             <nav class="flex space-x-6 text-sm font-medium">
                 <a href="{{ route('login') }}" 
-                class="{{ request()->routeIs('login') ? 'text-pink-400' : 'text-white hover:text-pink-300 transition' }}">
-                Login
+                   class="{{ request()->routeIs('login') ? 'text-pink-400' : 'text-white hover:text-pink-300 transition' }}">
+                   Login
                 </a>
                 <a href="{{ route('register') }}" 
-                class="{{ request()->routeIs('register') ? 'text-pink-400' : 'text-white hover:text-pink-300 transition' }}">
-                Register
+                   class="{{ request()->routeIs('register') ? 'text-pink-400' : 'text-white hover:text-pink-300 transition' }}">
+                   Register
                 </a>
             </nav>
         </header>
-
+    @endguest
+    @auth
+        <!-- Only show navigation bar (with logout/profile) when logged in -->
+        @include('layouts.navigation')
+    @endauth
 
             <!-- Page Heading -->
             @isset($header)

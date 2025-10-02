@@ -25,7 +25,7 @@
                 <x-text-input id="password" type="password" name="password" required
                     class="mt-1 w-full rounded-lg px-4 py-2 bg-black/30 text-white placeholder-gray-400 focus:ring-pink-400 focus:border-pink-400 pr-10"/>
                 <button type="button" onclick="togglePassword('password')" class="absolute right-3 top-9 text-gray-400 hover:text-pink-400">
-                    👁️
+                        ⎚-⎚
                 </button>
                 <x-input-error :messages="$errors->get('password')" class="text-pink-400 mt-1"/>
             </div>
@@ -48,6 +48,16 @@
                 </x-primary-button>
             </div>
         </form>
+         <script>
+            function togglePassword(id) {
+                const input = document.getElementById(id);
+                if (input.type === 'password') {
+                    input.type = 'text';
+                } else {
+                    input.type = 'password';
+                }
+            }
+            </script>
 
         <p class="mt-6 text-center text-gray-300 text-sm">
             Don’t have an account? 

@@ -45,8 +45,8 @@
             </div>
 
             <nav class="flex space-x-6 text-sm font-medium">
-                <a href="#" class="hover:text-pink-300 transition">Login</a>
-                <a href="#" class="hover:text-pink-300 transition">Register</a>
+                <a href="{{ route('login') }}" class="hover:text-pink-300 transition">Login</a>
+                <a href="{{ route('register') }}" class="hover:text-pink-300 transition">Register</a>
             </nav>
         </header>
       <main

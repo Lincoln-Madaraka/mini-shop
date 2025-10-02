@@ -5,5 +5,5 @@ use App\Http\Controllers\Api\OrderController as ApiOrderController;
 
 Route::get('products', [ApiProductController::class, 'index']);
 
-// For POST /api/orders you can require auth:sanctum or another guard
+// For POST /api/orders you can require auth:sanctum else another guard
 Route::middleware('auth:sanctum')->post('orders', [ApiOrderController::class, 'store']);

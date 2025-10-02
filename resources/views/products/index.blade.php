@@ -1,22 +1,24 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
-  <h1 class="text-2xl font-bold mb-6 text-pink-600">Products</h1>
+<h1 class="text-2xl font-bold mb-6">Product Catalog</h1>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    @foreach ($products as $product)
-      <div class="bg-white shadow-md rounded-lg p-4">
-        <img src="{{ asset('images/logo.png') }}" alt="product" class="w-full h-40 object-cover rounded">
-        <h2 class="text-lg font-semibold mt-2">{{ $product->name }}</h2>
-        <p class="text-gray-600">{{ $product->description }}</p>
-        <p class="text-pink-600 font-bold mt-2">${{ number_format($product->price, 2) }}</p>
-        <form method="POST" action="{{ route('cart.add', $product->id) }}" class="mt-3">
-          @csrf
-          <button type="submit" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">
-            Add to Cart
-          </button>
-        </form>
-      </div>
-    @endforeach
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  @foreach ($products as $product)
+  <div class="bg-white/10 rounded-xl p-4 shadow hover:scale-105 transition">
+    <h2 class="text-lg font-semibold mb-2">{{ $product->name }}</h2>
+    <p class="text-gray-300 mb-2">${{ number_format($product->price, 2) }}</p>
+    <p class="text-sm text-gray-400 mb-4">Stock: {{ $product->stock }}</p>
+    <a href="{{ route('products.show', $product) }}"
+       class="inline-block bg-pink-400/90 px-3 py-1 rounded-lg hover:bg-pink-500 transition">
+       View Details
+    </a>
   </div>
+  @endforeach
+</div>
+
+<div class="mt-6">
+  {{ $products->links() }}
+</div>
 @endsection
+

@@ -26,20 +26,26 @@
                     class="mt-1 w-full rounded-lg px-4 py-2 bg-black/30 text-white placeholder-gray-400 focus:ring-pink-400 focus:border-pink-400"/>
                 <x-input-error :messages="$errors->get('email')" class="text-pink-400 mt-1"/>
             </div>
-
-            <div class="mb-4">
+             <div class="mb-4 relative">
                 <x-input-label for="password" :value="__('Password')" class="text-gray-200"/>
                 <x-text-input id="password" type="password" name="password" required
-                    class="mt-1 w-full rounded-lg px-4 py-2 bg-black/30 text-white placeholder-gray-400 focus:ring-pink-400 focus:border-pink-400"/>
+                    class="mt-1 w-full rounded-lg px-4 py-2 bg-black/30 text-white placeholder-gray-400 focus:ring-pink-400 focus:border-pink-400 pr-10"/>
+                <button type="button" onclick="togglePassword('password')" class="absolute right-3 top-9 text-gray-400 hover:text-pink-400">
+                    👁️
+                </button>
                 <x-input-error :messages="$errors->get('password')" class="text-pink-400 mt-1"/>
             </div>
 
-            <div class="mb-4">
+            <div class="mb-4 relative">
                 <x-input-label for="password_confirmation" :value="__('Confirm Password')" class="text-gray-200"/>
                 <x-text-input id="password_confirmation" type="password" name="password_confirmation" required
-                    class="mt-1 w-full rounded-lg px-4 py-2 bg-black/30 text-white placeholder-gray-400 focus:ring-pink-400 focus:border-pink-400"/>
+                    class="mt-1 w-full rounded-lg px-4 py-2 bg-black/30 text-white placeholder-gray-400 focus:ring-pink-400 focus:border-pink-400 pr-10"/>
+                <button type="button" onclick="togglePassword('password_confirmation')" class="absolute right-3 top-9 text-gray-400 hover:text-pink-400">
+                    👁️
+                </button>
                 <x-input-error :messages="$errors->get('password_confirmation')" class="text-pink-400 mt-1"/>
             </div>
+
 
             <x-primary-button class="w-full bg-pink-400 text-black px-4 py-2 rounded-lg hover:bg-pink-500">
                 Register

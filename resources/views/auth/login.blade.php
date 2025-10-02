@@ -20,13 +20,16 @@
                     class="mt-1 w-full rounded-lg px-4 py-2 bg-black/30 text-white placeholder-gray-400 focus:ring-pink-400 focus:border-pink-400" />
                 <x-input-error :messages="$errors->get('email')" class="text-pink-400 mt-1"/>
             </div>
-
-            <div class="mb-4">
+            <div class="mb-4 relative">
                 <x-input-label for="password" :value="__('Password')" class="text-gray-200"/>
                 <x-text-input id="password" type="password" name="password" required
-                    class="mt-1 w-full rounded-lg px-4 py-2 bg-black/30 text-white placeholder-gray-400 focus:ring-pink-400 focus:border-pink-400" />
+                    class="mt-1 w-full rounded-lg px-4 py-2 bg-black/30 text-white placeholder-gray-400 focus:ring-pink-400 focus:border-pink-400 pr-10"/>
+                <button type="button" onclick="togglePassword('password')" class="absolute right-3 top-9 text-gray-400 hover:text-pink-400">
+                    👁️
+                </button>
                 <x-input-error :messages="$errors->get('password')" class="text-pink-400 mt-1"/>
             </div>
+        
 
             <div class="flex items-center mb-4">
                 <input id="remember_me" type="checkbox" name="remember" class="rounded text-pink-400 focus:ring-pink-400">

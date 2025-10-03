@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: staffile-app
+    container_name: mini-shop
     volumes:
       - ./:/var/www/html
     env_file:
@@ -16,7 +16,7 @@ services:
 
   web:
     image: nginx:1.27-alpine
-    container_name: staffile-web
+    container_name: mini-shop
     ports:
       - "8080:80"
     volumes:
@@ -27,13 +27,13 @@ services:
 
   db:
     image: postgres:16-alpine
-    container_name: staffile-db
+    container_name: minishop-db
     ports:
       - "6543:5432"   # host 6543 -> container 5432 (matches your .env)
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: linc
-      POSTGRES_DB: staffile
+      POSTGRES_USER: minishop
+      POSTGRES_PASSWORD: secret123
+      POSTGRES_DB: minishop
     volumes:
       - pgdata:/var/lib/postgresql/data
     restart: unless-stopped

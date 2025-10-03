@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('salaries', function (Blueprint $table) {
-                    Schema::table('salaries', function (Blueprint $table) {
-                $table->string('file_path')->nullable();
-            });
+        Schema::table('products', function (Blueprint $table) {
+            //
         });
     }
 
@@ -23,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('salaries', function (Blueprint $table) {
+        Schema::table('products', function (Blueprint $table) {
             //
         });
     }

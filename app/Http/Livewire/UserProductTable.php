@@ -8,12 +8,12 @@ use Livewire\Component;
 
 class UserProductTable extends Component
 {
-    public $salaries;
+    public $products;
 
     public function mount()
     {
         // Load the logged-in user's salaries from DB
-        $this->salaries = Product::where('user_id', Auth::id())->get();
+        $this->product = Product::where('user_id', Auth::id())->get();
     }
 
     public function render()

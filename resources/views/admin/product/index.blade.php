@@ -90,14 +90,39 @@
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $product->stock }}</td>
 
                                     <!-- Manage -->
-                                    <td class="py-4 px-6 border-b border-grey-light flex gap-2">
-                                        <button onclick="location.href='{{ route('admin.product.edit', $product->id) }}';" class="px-4 py-1 bg-green-600 rounded text-white">Edit</button>
-                                        <form method="POST" action="{{ route('admin.product.destroy', $product->id) }}" onsubmit="return confirm('Are you sure?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="px-4 py-1 bg-red-600 rounded text-white">Delete</button>
-                                        </form>
-                                    </td>
+                                <td class="py-4 px-6 border-b border-grey-light">
+                                    <div x-data="{ open: false }" class="relative">
+                                        <!-- View Button -->
+                                        <button @click="open = true" class="px-4 py-1 bg-blue-600 rounded text-white hover:bg-blue-500 transition">
+                                            View
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div 
+                                            x-show="open" 
+                                            x-transition 
+                                            class="fixed inset-0 flex items-center justify-center bg-black/50 z-50"
+                                        >
+                                            <div @click.away="open = false" class="bg-gradient-to-br from-black via-black to-gray-900 text-white rounded-2xl p-6 w-96 max-w-full shadow-lg space-y-4">
+                                                <h2 class="text-xl font-bold">Manage Product</h2>
+                                                <p class="text-gray-300 truncate">{{ $product->name }}</p>
+
+                                                <div class="flex justify-end gap-2 mt-4">
+                                                    <button @click="open = false; location.href='{{ route('admin.product.edit', $product->id) }}';" class="px-4 py-1 bg-green-600 rounded hover:bg-green-500 transition text-white">Edit</button>
+                                                    <form method="POST" action="{{ route('admin.product.destroy', $product->id) }}" onsubmit="return confirm('Are you sure?')">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="px-4 py-1 bg-red-600 rounded hover:bg-red-500 transition text-white">Delete</button>
+                                                    </form>
+                                                </div>
+
+                                                <!-- Close X -->
+                                                <button @click="open = false" class="absolute top-2 right-2 text-gray-300 hover:text-white text-xl font-bold">&times;</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
                                 </tr>
                             @endforeach
                         </tbody>

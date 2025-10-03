@@ -34,11 +34,16 @@
                     Dashboard
                 </a>
 
-                <a href="{{ route('shop.cart') }}" class="flex items-center gap-2 text-white hover:text-pink-400 transition">
+                <a href="{{ route('shop.cart') }}" class="relative flex items-center gap-2 text-white hover:text-pink-400 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.3 5.2a1 1 0 001 1.3h12.6a1 1 0 001-1.3L17 13M7 13l10 0" />
                     </svg>
                     Cart
+                    @if($cartCount > 0)
+                        <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full font-bold">
+                            {{ $cartCount }}
+                        </span>
+                    @endif
                 </a>
 
                 <a href="#" class="flex items-center gap-2 text-white hover:text-pink-400 transition">
@@ -126,7 +131,11 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.3 5.2a1 1 0 001 1.3h12.6a1 1 0 001-1.3L17 13M7 13l10 0" />
                 </svg>
-                Cart
+                <span>Cart</span> @if($cartCount > 0)
+                    <span class="bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full font-bold">
+                        {{ $cartCount }}
+                    </span>
+                @endif
             </x-responsive-nav-link>
 
             <!-- Checkout -->

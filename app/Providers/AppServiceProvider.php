@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Session;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,5 +25,11 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('production')) {
             URL::forceScheme('https');
         }
+
+        View::composer('*', function ($view) {
+            $cart = Session::get('cart', []);
+            $cartCount = array_sum(array_column($cart, 'quantity')); // total items
+            $view->with('cartCount', $cartCount);
+        });
     }
 }

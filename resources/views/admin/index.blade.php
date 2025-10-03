@@ -56,20 +56,43 @@
                 <h1 class="text-3xl font-bold mb-8">Admin Dashboard</h1>
 
                 <!-- Summary Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+
+                    <!-- Total Users -->
                     <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow hover:scale-105 transition">
-                        <h2 class="text-xl font-semibold">Total Users</h2>
+                        <h2 class="text-xl font-semibold flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20a4 4 0 00-8 0m8 0H9m6 0v-2a4 4 0 00-8 0v2m12-6a4 4 0 100-8 4 4 0 000 8zm-6 0a4 4 0 100-8 4 4 0 000 8z" />
+                            </svg>
+                            Total Users
+                        </h2>
                         <p class="text-3xl mt-4">{{ $usersCount ?? 0 }}</p>
                     </div>
+
+                    <!-- Total Products -->
                     <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow hover:scale-105 transition">
-                        <h2 class="text-xl font-semibold">Total Products</h2>
+                        <h2 class="text-xl font-semibold flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 11h14l1 10H4l1-10z" />
+                            </svg>
+                            Total Products
+                        </h2>
                         <p class="text-3xl mt-4">{{ $productCount ?? 0 }}</p>
                     </div>
+
+                    <!-- Total Orders -->
                     <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow hover:scale-105 transition">
-                        <h2 class="text-xl font-semibold">Total Orders</h2>
+                        <h2 class="text-xl font-semibold flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 0l-3-3m3 3l3-3m0 7h.01M4 20h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v11a2 2 0 002 2z" />
+                            </svg>
+                            Total Orders
+                        </h2>
                         <p class="text-3xl mt-4">{{ $ordersCount ?? 0 }}</p>
                     </div>
+
                 </div>
+
 
             </div>
         </main>

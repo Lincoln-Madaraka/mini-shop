@@ -37,9 +37,10 @@ Route::get('/products/{product}', [ShopProductController::class, 'show'])
     ->name('products.show')
     ->middleware('auth');
 
-Route::post('/cart/{product}/add', [CartController::class, 'add'])
-    ->name('cart.add')
-    ->middleware('auth');
+Route::post('/cart/{product}/add', [CartController::class, 'add'])->name('cart.add')->middleware('auth');
+Route::get('/cart', [CartController::class, 'index'])->name('shop.cart')->middleware('auth');
+Route::patch('/cart/{product}', [CartController::class, 'update'])->name('cart.update')->middleware('auth');
+Route::delete('/cart/{product}', [CartController::class, 'remove'])->name('cart.remove')->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -45,6 +45,25 @@
                 </div>
             </div>
         </main>
+        <!-- Cart Notification Modal -->
+        <div x-data="{ show: {{ session('success') ? 'true' : 'false' }} }" 
+            x-show="show" 
+            x-transition.opacity
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
+
+            <div class="bg-black text-white rounded-2xl p-6 max-w-sm w-full relative flex flex-col items-center gap-4">
+                <button @click="show = false" 
+                        class="absolute top-2 right-2 text-white text-3xl font-bold hover:bg-black/20 rounded-full px-2">
+                    &times;
+                </button>
+              <p class="text-lg font-semibold text-center">
+                    {{ session('success') }}
+                    <span class="block mt-1">You can continue shopping!</span>
+                </p>
+
+            </div>
+        </div>
+
 
         <!-- Full Page Modal -->
         <div x-show="open" x-transition.opacity class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4">

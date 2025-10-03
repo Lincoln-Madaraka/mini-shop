@@ -1,9 +1,19 @@
 <?php
 
-use App\Http\Controllers\Api\ProductController as ApiProductController;
-use App\Http\Controllers\Api\OrderController as ApiOrderController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
-Route::get('products', [ApiProductController::class, 'index']);
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "api" middleware group. Make something great!
+|
+*/
 
-// For POST /api/orders you can require auth:sanctum else another guard
-Route::middleware('auth:sanctum')->post('orders', [ApiOrderController::class, 'store']);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});

@@ -1,49 +1,50 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProductController; // public catalog controller
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\Admin\ProductController as AdminProductController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PayslipController;
+use App\Http\Controllers\UserPayslipController;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// auth routes (Breeze)
-require __DIR__.'/auth.php';
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-// login routes already set by Breeze; if you manually defined login route, ensure import above
+Route::middleware(['auth', 'can:admin-login'])->name('admin.')->prefix('/admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('index');
 
-// after login, redirect based on role (we'll patch the Auth controller below)
+    Route::middleware('can:admin-only')->group(function () {
+        Route::resource('product', ProductController::class);
+        Route::resource('users', UserController::class);
 
-// Public catalog
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+        Route::get('/payslips', [PayslipController::class, 'index'])->name('payslips.index');
+        Route::get('/payslips/{product}', [PayslipController::class, 'show'])->name('payslips.show');
+        Route::get('/payslips/{product}/download', [PayslipController::class, 'download'])->name('payslips.download');
+    });
 
-// Cart & checkout (customer)
+    Route::get('/assigned-salaries', [ProductController::class, 'showAuthAssignedSalaries'])->name('auth_salaries.index');
+    Route::get('/show-single-assigned-product/{id}', [ProductController::class, 'showSingleAssignedProduct'])->name('single_assign_product.show');
+    Route::post('/complete-product/{id}', [ProductController::class, 'productCompleteButton'])->name('complete_product.store');
+
+});
+
+
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () { // customer dashboard
-        return view('customer.dashboard');
-    })->name('customer.dashboard');
-
-    Route::get('/cart', [CartController::class,'index'])->name('cart.index');
-    Route::post('/cart/add', [CartController::class,'add'])->name('cart.add');
-    Route::post('/cart/remove', [CartController::class,'remove'])->name('cart.remove');
-
-    Route::post('/checkout', [CheckoutController::class,'store'])->name('checkout.store');
-
-    // optional: order viewing for customer
-    Route::get('/orders/{order}', [CheckoutController::class,'show'])->name('orders.show');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+Route::middleware(['auth'])->group(function () {
+    Route::get('/my-payslips/{product}/download', [UserPayslipController::class, 'download'])
+        ->name('user.payslips.download');
 });
 
-// Admin routes
-Route::middleware(['auth','admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
-
-    Route::resource('products', AdminProductController::class);
-});
+require __DIR__.'/auth.php';

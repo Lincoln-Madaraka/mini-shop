@@ -26,7 +26,7 @@
             <!-- Logo -->
             <div class="flex items-center space-x-2">
             <a href="{{ url('/') }}" class="sm:hidden flex items-center space-x-2">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-10 h-10 rounded-full">
+                <img src="{{ asset('import/assets/logo.png') }}" alt="Logo" class="w-10 h-10 rounded-full">
 
                 <!--My Logo Text -->
                 <div class="flex flex-col space-y-0">
@@ -38,7 +38,7 @@
                     <span class="text-xs tracking-widest font-bold text-pink-400">MINI</span>
                     <h1 class="text-2xl font-bold text-white flex items-center">
                         SH
-                        <img src="{{ asset('images/logo.png') }}" alt="O" class="w-6 h-6 mx-1">
+                        <img src="{{ asset('import/assets/logo.png') }}" alt="O" class="w-6 h-6 mx-1">
                         P
                     </h1>
                 </a>
@@ -54,7 +54,7 @@
 >
   {{-- Preloader (you already had this idea) --}}
   <div id="preloader" class="fixed inset-0 bg-white flex items-center justify-center z-50">
-    <img src="{{ asset('images/logo.png') }}"
+    <img src="{{ asset('import/assets/logo.png') }}"
          alt="Logo"
          class="w-16 h-16 rounded-full animate-spin-slow">
   </div>
@@ -70,7 +70,7 @@
 
         <p class="mt-4 text-gray-200/90 max-w-xl">
           Mini Shop Lite is a sleek demo store built for your Laravel Full-Stack assessment.
-          Browse curated products, add to cart, checkout, and try our API. Designed to look
+          Browse curated product, add to cart, checkout, and try our API. Designed to look
           beautiful on both mobile and desktop — with smooth micro-animations, sliding headlines,
           and an immersive product carousel.
         </p>
@@ -94,21 +94,21 @@
               </svg>
             </a>
 
-            <a href="#products" class="text-sm text-gray-300 hover:text-white transition">Browse products</a>
+            <a href="#product" class="text-sm text-gray-300 hover:text-white transition">Browse product</a>
           </div>
         </div>
       </div>
 
       <div class="flex-1 hidden lg:flex justify-center">
         <div class="w-72 h-72 rounded-2xl bg-gradient-to-tr from-white/5 to-white/3 p-6 backdrop-blur-md border border-white/5 flex items-center justify-center">
-          <img src="{{ asset('images/happy.jpg') }}" alt="Happy" class="rounded-xl object-cover w-full h-full shadow-xl">
+          <img src="{{ asset('import/assets/happy.jpg') }}" alt="Happy" class="rounded-xl object-cover w-full h-full shadow-xl">
         </div>
       </div>
     </div>
   </section>
 
   {{-- Product carousel / grid --}}
-  <section id="products" class="w-full max-w-6xl mx-auto py-6 lg:py-12">
+  <section id="product" class="w-full max-w-6xl mx-auto py-6 lg:py-12">
     <div class="flex items-center justify-between mb-4 px-2">
       <h3 class="text-xl md:text-2xl font-bold">Featured picks</h3>
       <div class="hidden md:flex items-center gap-2">
@@ -129,7 +129,7 @@
         <article class="product-card min-w-[260px] max-w-[260px] rounded-2xl bg-gradient-to-br from-white/5 to-white/3 p-4 backdrop-blur-sm border border-white/5 shadow-xl transform transition-all">
           <div class="relative">
             <div class="ribbon absolute left-3 top-3 text-xs font-semibold px-2 py-1 rounded-full bg-pink-400 text-black">-20%</div>
-            <img src="{{ asset('images/black airbuds sony.png') }}" alt="Black Airbuds" class="w-full h-32 object-contain rounded-xl">
+            <img src="{{ asset('import/assets/black airbuds sony.png') }}" alt="Black Airbuds" class="w-full h-32 object-contain rounded-xl">
           </div>
 
           <div class="mt-3 text-left">
@@ -152,7 +152,7 @@
         <article class="product-card min-w-[260px] max-w-[260px] rounded-2xl bg-gradient-to-br from-white/5 to-white/3 p-4 backdrop-blur-sm border border-white/5 shadow-xl transform transition-all">
           <div class="relative">
             <div class="ribbon absolute left-3 top-3 text-xs font-semibold px-2 py-1 rounded-full bg-pink-400 text-black">-15%</div>
-            <img src="{{ asset('images/cannon camera.png') }}" alt="Cannon Camera" class="w-full h-32 object-contain rounded-xl">
+            <img src="{{ asset('import/assets/cannon camera.png') }}" alt="Cannon Camera" class="w-full h-32 object-contain rounded-xl">
           </div>
 
           <div class="mt-3 text-left">
@@ -175,7 +175,7 @@
         <article class="product-card min-w-[260px] max-w-[260px] rounded-2xl bg-gradient-to-br from-white/5 to-white/3 p-4 backdrop-blur-sm border border-white/5 shadow-xl transform transition-all">
           <div class="relative">
             <div class="ribbon absolute left-3 top-3 text-xs font-semibold px-2 py-1 rounded-full bg-pink-400 text-black">-10%</div>
-            <img src="{{ asset('images/fitness watch.png') }}" alt="Fitness Watch" class="w-full h-32 object-contain rounded-xl">
+            <img src="{{ asset('import/assets/fitness watch.png') }}" alt="Fitness Watch" class="w-full h-32 object-contain rounded-xl">
           </div>
 
           <div class="mt-3 text-left">
@@ -198,7 +198,7 @@
         <article class="product-card min-w-[260px] max-w-[260px] rounded-2xl bg-gradient-to-br from-white/5 to-white/3 p-4 backdrop-blur-sm border border-white/5 shadow-xl transform transition-all">
           <div class="relative">
             <div class="ribbon absolute left-3 top-3 text-xs font-semibold px-2 py-1 rounded-full bg-pink-400 text-black">-8%</div>
-            <img src="{{ asset('images/pc.jpeg') }}" alt="Macbook PC" class="w-full h-32 object-contain rounded-xl">
+            <img src="{{ asset('import/assets/pc.jpeg') }}" alt="Macbook PC" class="w-full h-32 object-contain rounded-xl">
           </div>
 
           <div class="mt-3 text-left">
@@ -220,7 +220,7 @@
 
         {{-- LAST SPECIAL CARD: Shoe (blurred background, CTA overlay) --}}
         <article id="specialCard" class="product-card min-w-[300px] max-w-[300px] rounded-2xl relative overflow-hidden">
-          <img src="{{ asset('images/shoe.jpg') }}" alt="Shoe" class="w-full h-60 object-cover filter blur-sm scale-105">
+          <img src="{{ asset('import/assets/shoe.jpg') }}" alt="Shoe" class="w-full h-60 object-cover filter blur-sm scale-105">
           <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
             <div class="backdrop-blur-md bg-black/40 p-4 rounded-xl">
               <h4 class="text-2xl font-bold">See more styles</h4>
@@ -246,12 +246,12 @@
   <section class="w-full max-w-6xl mx-auto py-6">
     <h4 class="text-lg font-bold mb-3">Happy customers</h4>
     <div class="grid grid-cols-3 md:grid-cols-6 gap-3">
-      <img src="{{ asset('images/happy1.jpeg') }}" alt="happy1" class="w-full h-32 object-cover rounded-lg shadow-sm">
-      <img src="{{ asset('images/happy2.jpg') }}" alt="happy2" class="w-full h-32 object-cover rounded-lg shadow-sm hidden md:block">
-      <img src="{{ asset('images/happy3.jpeg') }}" alt="happy3" class="w-full h-32 object-cover rounded-lg shadow-sm">
-      <img src="{{ asset('images/happy4.jpeg') }}" alt="happy4" class="w-full h-32 object-cover rounded-lg shadow-sm hidden md:block">
-      <img src="{{ asset('images/happy5.jpeg') }}" alt="happy5" class="w-full h-32 object-cover rounded-lg shadow-sm hidden md:block">
-      <img src="{{ asset('images/happy.jpg') }}" alt="happy" class="w-full h-32 object-cover rounded-lg shadow-sm">
+      <img src="{{ asset('import/assets/happy1.jpeg') }}" alt="happy1" class="w-full h-32 object-cover rounded-lg shadow-sm">
+      <img src="{{ asset('import/assets/happy2.jpg') }}" alt="happy2" class="w-full h-32 object-cover rounded-lg shadow-sm hidden md:block">
+      <img src="{{ asset('import/assets/happy3.jpeg') }}" alt="happy3" class="w-full h-32 object-cover rounded-lg shadow-sm">
+      <img src="{{ asset('import/assets/happy4.jpeg') }}" alt="happy4" class="w-full h-32 object-cover rounded-lg shadow-sm hidden md:block">
+      <img src="{{ asset('import/assets/happy5.jpeg') }}" alt="happy5" class="w-full h-32 object-cover rounded-lg shadow-sm hidden md:block">
+      <img src="{{ asset('import/assets/happy.jpg') }}" alt="happy" class="w-full h-32 object-cover rounded-lg shadow-sm">
       <div class="col-span-3 text-left mt-2 md:mt-0 text-xs text-gray-300">
         Loved by people who want quick shopping and clean UI. Try the cart & checkout flow.
       </div>
@@ -388,9 +388,9 @@
                 <span class="hidden md:inline">•</span>
             </span>
             <div class="flex items-center gap-4 mt-2 md:mt-0">
-                <img src="{{ asset('images/mastercard.png') }}" alt="Mastercard" class="h-6">
-                <img src="{{ asset('images/mpesa.jpeg') }}" alt="M-Pesa" class="h-6">
-                <img src="{{ asset('images/stripe.png') }}" alt="Stripe" class="h-6">
+                <img src="{{ asset('import/assets/mastercard.png') }}" alt="Mastercard" class="h-6">
+                <img src="{{ asset('import/assets/mpesa.jpeg') }}" alt="M-Pesa" class="h-6">
+                <img src="{{ asset('import/assets/stripe.png') }}" alt="Stripe" class="h-6">
             </div>
         </footer>
 

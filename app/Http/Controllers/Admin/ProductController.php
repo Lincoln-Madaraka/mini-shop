@@ -4,64 +4,86 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Category; // if needed
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of products.
-     */
+    // List all products
     public function index()
     {
-        $products = Product::orderBy('created_at', 'desc')->paginate(20);
-        return view('admin.products.index', compact('products'));
+        $products = Product::paginate(15);
+        return view('admin.product.index', compact('products'));
     }
 
-    /**
-     * Show the form for creating a new product.
-     */
+    // Show form to create a new product
     public function create()
     {
-        return view('admin.products.create');
+        $categories = Category::all(); // optional
+        return view('admin.product.create', compact('categories'));
     }
 
-    /**
-     * Store a newly created product in storage.
-     */
-    public function store(StoreProductRequest $request)
+    // Store new product
+    public function store(Request $request)
     {
-        Product::create($request->validated());
-        return redirect()->route('admin.products.index')
-                         ->with('success', 'Product created.');
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'image' => 'nullable|image|max:2048'
+        ]);
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('products', 'public');
+        }
+
+        Product::create($data);
+
+        return redirect()->route('admin.product.index')
+                         ->with('success', 'Product added successfully!');
     }
 
-    /**
-     * Show the form for editing the specified product.
-     */
+    // Show form to edit a product
     public function edit(Product $product)
     {
-        return view('admin.products.edit', compact('product'));
+        $categories = Category::all(); // optional
+        return view('admin.product.edit', compact('product', 'categories'));
     }
 
-    /**
-     * Update the specified product in storage.
-     */
-    public function update(UpdateProductRequest $request, Product $product)
+    // Update product
+    public function update(Request $request, Product $product)
     {
-        $product->update($request->validated());
-        return redirect()->route('admin.products.index')
-                         ->with('success', 'Product updated.');
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'image' => 'nullable|image|max:2048'
+        ]);
+
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($product->image) {
+                \Storage::disk('public')->delete($product->image);
+            }
+            $data['image'] = $request->file('image')->store('products', 'public');
+        }
+
+        $product->update($data);
+
+        return redirect()->route('admin.product.index')
+                         ->with('success', 'Product updated successfully!');
     }
 
-    /**
-     * Remove the specified product from storage.
-     */
+    // Delete product
     public function destroy(Product $product)
     {
+        if ($product->image) {
+            \Storage::disk('public')->delete($product->image);
+        }
+
         $product->delete();
-        return redirect()->route('admin.products.index')
-                         ->with('success', 'Product deleted.');
+
+        return redirect()->route('admin.product.index')
+                         ->with('success', 'Product deleted successfully!');
     }
 }

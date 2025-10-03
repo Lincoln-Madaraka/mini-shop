@@ -25,14 +25,15 @@
 
             </div>
          <div class="hidden sm:flex sm:items-center sm:gap-10">
-                <!-- Desktop Links with SVGs -->
+               
+                 @if(Auth::user() && Auth::user()->role !== 'admin')
                 <a href="{{ route('dashboard') }}" class="flex items-center gap-2 text-white hover:text-pink-400 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6" />
                     </svg>
                     Dashboard
                 </a>
-
+ 
                 <a href="#" class="flex items-center gap-2 text-white hover:text-pink-400 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.3 5.2a1 1 0 001 1.3h12.6a1 1 0 001-1.3L17 13M7 13l10 0" />
@@ -53,6 +54,7 @@
                     </svg>
                     My Orders
                 </a>
+                @endif
 
                 <!-- User Dropdown -->
                 <x-dropdown align="right" width="48">
@@ -110,17 +112,73 @@
     <!-- Responsive Navigation Menu (Mobile) -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-black/60 backdrop-blur-md text-white">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('admin.index')" :active="request()->routeIs('dashboard')" class="text-white hover:text-black">
-                {{ __('Dashboard') }}
+            <!-- Dashboard -->
+             @if(Auth::user() && Auth::user()->role !== 'admin')
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="flex items-center gap-2 text-white hover:text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6" />
+                </svg>
+                Dashboard
             </x-responsive-nav-link>
 
-            {{-- Admin links only for admin role --}}
-            @if(Auth::user() && Auth::user()->role === 'admin')
-                <x-responsive-nav-link :href="route('admin.product.index')" class="text-white hover:text-black">Manage Products</x-responsive-nav-link>
-                <x-responsive-nav-link href="#" class="text-white hover:text-black">View Orders</x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('admin.users.index')" class="text-white hover:text-black">View Users</x-responsive-nav-link>
+            <!-- Cart -->
+            <x-responsive-nav-link href="#" class="flex items-center gap-2 text-white hover:text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.3 5.2a1 1 0 001 1.3h12.6a1 1 0 001-1.3L17 13M7 13l10 0" />
+                </svg>
+                Cart
+            </x-responsive-nav-link>
+
+            <!-- Checkout -->
+            <x-responsive-nav-link href="#" class="flex items-center gap-2 text-white hover:text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3v1h6v-1c0-1.657-1.343-3-3-3zm9 4h-1a9 9 0 11-16 0H3" />
+                </svg>
+                Checkout
+            </x-responsive-nav-link>
+
+            <!-- My Orders -->
+            <x-responsive-nav-link href="#" class="flex items-center gap-2 text-white hover:text-black">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2h6v2a2 2 0 002 2h2v2H5v-2h2a2 2 0 002-2zm0-6V9a3 3 0 016 0v2" />
+                </svg>
+                My Orders
+            </x-responsive-nav-link>
             @endif
+
+            {{-- Admin links only for admin role --}}
+           @if(Auth::user() && Auth::user()->role === 'admin')
+                    <x-responsive-nav-link :href="route('admin.index')" class="flex items-center gap-2 text-white hover:text-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6" />
+                        </svg>
+                        Dashboard
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link :href="route('admin.product.index')" class="flex items-center gap-2 text-white hover:text-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6M16 21v-4H8v4h8zM3 13h18" />
+                        </svg>
+                        Manage Products
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link href="#" class="flex items-center gap-2 text-white hover:text-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.3 5.2a1 1 0 001 1.3h12.6a1 1 0 001-1.3L17 13" />
+                        </svg>
+                        View Orders
+                    </x-responsive-nav-link>
+
+                    <x-responsive-nav-link :href="route('admin.users.index')" class="flex items-center gap-2 text-white hover:text-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20h6v-2a4 4 0 00-3-3.87M12 12a4 4 0 100-8 4 4 0 000 8z" />
+                        </svg>
+                        View Users
+                    </x-responsive-nav-link>
+                @endif
         </div>
+
+  
 
         <!-- Responsive Settings -->
         <div class="pt-4 pb-1 border-t border-gray-700">

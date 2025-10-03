@@ -8,15 +8,15 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PayslipController;
 use App\Http\Controllers\UserPayslipController;
-
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Shop\CartController;
+use App\Http\Controllers\Shop\ProductController as ShopProductController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'can:admin-login'])->name('admin.')->prefix('/admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
@@ -29,13 +29,17 @@ Route::middleware(['auth', 'can:admin-login'])->name('admin.')->prefix('/admin')
         Route::get('/payslips/{product}', [PayslipController::class, 'show'])->name('payslips.show');
         Route::get('/payslips/{product}/download', [PayslipController::class, 'download'])->name('payslips.download');
     });
-
-    Route::get('/assigned-salaries', [ProductController::class, 'showAuthAssignedSalaries'])->name('auth_salaries.index');
     Route::get('/show-single-assigned-product/{id}', [ProductController::class, 'showSingleAssignedProduct'])->name('single_assign_product.show');
     Route::post('/complete-product/{id}', [ProductController::class, 'productCompleteButton'])->name('complete_product.store');
 
 });
+Route::get('/products/{product}', [ShopProductController::class, 'show'])
+    ->name('products.show')
+    ->middleware('auth');
 
+Route::post('/cart/{product}/add', [CartController::class, 'add'])
+    ->name('cart.add')
+    ->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

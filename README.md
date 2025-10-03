@@ -1,70 +1,62 @@
-# Staffile Payroll Management App
+<p align="center">
+<a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
+</a>
+</p>
 
-Staffile is a simple web-based application built with Laravel and Livewire that helps organizations manage their employees and automate payroll processing.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions">
+<img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status">
+</a>
+</p>
 
-The system allows administrators to manage employee records, assign salaries, and generate payroll with automatic statutory deductions including SHIF, Housing Levy, and PAYE (30%)
+## About Laravel
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## Features
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-- *Employee Management*
-Add, edit, view, and delete employee records. Each employee is uniquely managed with personal and contact information.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-- *Product Assignment*
-Assign a gross product to each employee. The system ensures an employee can only have one product assigned at a time.
+## Learning Laravel
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-- *Statutory Deductions*
-Automatically deduct:
-   * SHIF: Fixed amount (e.g. 500)
-   * Housing Levy: Fixed amount (e.g. 500)
-   * PAYE: 30% of the gross product
-These deductions are subtracted from the gross product to compute the net product.
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-- *Payroll Generation*
-Generate payroll records for employees showing gross product, each deduction, and net product. This ensures clarity and compliance with statutory requirementss.
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-- *Download Payslip*
-The Admin is able to view an employees payslip and download. The employee can download their payslip.
-- *Livewire-Powered Interface*
-Built using Laravel Livewire for a smooth, interactive user experience with real-time updates.
+## Laravel Sponsors
 
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
+### Premium Partners
 
-## Installation
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[WebReinvent](https://webreinvent.com/)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Jump24](https://jump24.co.uk)**
+- **[Redberry](https://redberry.international/laravel/)**
+- **[Active Logic](https://activelogic.com)**
+- **[byte5](https://byte5.de)**
+- **[OP.GG](https://op.gg)**
 
-To install and run the Staffile App locally, follow these steps:
+## Contributing
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-1. Clone the project
-2. Go to the project root directory and run `composer install` and `npm install`
-3. Create `.env` file and copy content from `.env.example`
-4. Run `php artisan key:generate` from terminal
-5. Change database information in `.env`
-6. Run migrations by executing `php artisan migrate` , Then Run  `php artisan db:seed` if you want use faker database records,
-7. Start the project by running `php artisan serve` then `npm run dev`
+## Code of Conduct
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-8. Access the application in your web browser at `http://localhost:8000/admin`, with this credentials
+## Security Vulnerabilities
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-````
-test@example.com
-password
-````
-## About Me
-*Reach Out To Me btw!!*
-I am a Fullstack Developer with 1+ year of experience in fullstack web and app development, my expertise lies in NextJs, Django Flask and PHP Laravel. Strong foundation in creating efficient and scalable web solutions. Skills include Python
-Laravel, PHP, TailwindCSS, and Livewire. Enjoy working with MySQL databases and REST APIs.
-Dedication to producing clean, well-documented code and sharing knowledge with others is
-essential. Committed to continuous learning and improvement to grow as git a developer.
-
-- [My Portfolio](https://lincoln-madaraka-portfolio.vercel.app/).
-- [Twitter](https://x.com/syntaxrtx).
-
-
-
-**Project Status**
-Deployed on render 
-[Live-Site](https://payroll-manager.onrender.com)
-
-**Test Credentials**
-````
-test@example.com
-password
-````
+## License
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).                                                                                                                               

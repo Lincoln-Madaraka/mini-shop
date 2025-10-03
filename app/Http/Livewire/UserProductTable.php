@@ -13,7 +13,7 @@ class UserProductTable extends Component
     public function mount()
     {
         // Load the logged-in user's salaries from DB
-        $this->product = Product::where('user_id', Auth::id())->get();
+        $this->products = Product::all();
     }
 
     public function render()

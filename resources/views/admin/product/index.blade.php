@@ -44,11 +44,20 @@
                 <!-- Add Product Button -->
                 <button onclick="location.href='{{ route('admin.product.create') }}';" class="px-4 py-1 mb-4 bg-blue-600 rounded text-white font-semibold">Add Product</button>
 
-                <!-- Products Table (desktop) -->
+               <!-- Products Table (desktop) -->
                 <div class="hidden md:block bg-white/10 backdrop-blur-lg rounded-xl overflow-auto">
-                    <table class="text-left w-full border-collapse">
+                    <table class="text-left w-full border-collapse table-auto">
+                        <colgroup>
+                            <col class="w-16"> <!-- Image -->
+                            <col class="w-12"> <!-- ID -->
+                            <col class="w-64"> <!-- Name -->
+                            <col class="w-24"> <!-- Price -->
+                            <col class="w-24"> <!-- Stock -->
+                            <col class="w-48"> <!-- Manage -->
+                        </colgroup>
                         <thead>
                             <tr>
+                                <th class="py-4 px-6 font-bold uppercase text-sm border-b border-grey-light">Image</th>
                                 <th class="py-4 px-6 font-bold uppercase text-sm border-b border-grey-light">ID</th>
                                 <th class="py-4 px-6 font-bold uppercase text-sm border-b border-grey-light">Name</th>
                                 <th class="py-4 px-6 font-bold uppercase text-sm border-b border-grey-light">Price</th>
@@ -59,15 +68,28 @@
                         <tbody>
                             @foreach($products as $product)
                                 <tr class="hover:bg-white/20">
-                                    <td class="py-4 px-6 border-b border-grey-light">{{ $product->id }}</td>
-                                    <td class="py-4 px-6 border-b border-grey-light flex items-center gap-2">
+                                    <!-- Image column -->
+                                    <td class="py-4 px-6 border-b border-grey-light">
                                         @if($product->image)
-                                            <img src="{{ asset('storage/'.$product->image) }}" alt="Product" class="w-8 h-8 rounded">
+                                            <img src="{{ asset('storage/'.$product->image) }}" alt="Product" class="w-12 h-12 rounded mx-auto">
                                         @endif
-                                        {{ $product->name }}
                                     </td>
+
+                                    <!-- ID -->
+                                    <td class="py-4 px-6 border-b border-grey-light">{{ $product->id }}</td>
+
+                                    <!-- Name -->
+                                    <td class="py-4 px-6 border-b border-grey-light">
+                                        <span class="truncate">{{ $product->name }}</span>
+                                    </td>
+
+                                    <!-- Price -->
                                     <td class="py-4 px-6 border-b border-grey-light">${{ $product->price }}</td>
+
+                                    <!-- Stock -->
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $product->stock }}</td>
+
+                                    <!-- Manage -->
                                     <td class="py-4 px-6 border-b border-grey-light flex gap-2">
                                         <button onclick="location.href='{{ route('admin.product.edit', $product->id) }}';" class="px-4 py-1 bg-green-600 rounded text-white">Edit</button>
                                         <form method="POST" action="{{ route('admin.product.destroy', $product->id) }}" onsubmit="return confirm('Are you sure?')">
@@ -81,6 +103,9 @@
                         </tbody>
                     </table>
                 </div>
+
+             
+
 
                 <!-- Mobile Cards -->
                 <div class="md:hidden space-y-4">

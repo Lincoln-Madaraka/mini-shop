@@ -17,7 +17,7 @@
             <a href="{{ route('admin.product.index') }}" class="flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
                 <i class="fas fa-box"></i> Manage Products
             </a>
-            <a href="{{ route('admin.orders.index') }}" class="flex items-center gap-3 bg-gradient-to-r from-pink-600 to-pink-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
+            <a href="#" class="flex items-center gap-3 bg-gradient-to-r from-pink-600 to-pink-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
                 <i class="fas fa-shopping-cart"></i> View Orders
             </a>
             <a href="{{ route('admin.users.index') }}" class="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-purple-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
@@ -74,9 +74,9 @@
                     </div>
 
                     <!-- Image Upload -->
-                    <div>
+                    <div class="cursor-pointer">
                         <label class="block mb-1 font-semibold">Product Image</label>
-                        <input type="file" name="image" accept="image/*" class="w-full rounded px-3 py-2 text-black">
+                        <input type="file" name="image" accept="image/*" class="w-full rounded px-3 py-2 text-black cursor-pointer">
                         @error('image') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
                     </div>
 

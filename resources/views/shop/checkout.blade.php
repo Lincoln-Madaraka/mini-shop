@@ -57,7 +57,7 @@
 
                     <!-- Confirm Order Button -->
                     <button type="submit" 
-                            class="w-full sm:w-auto bg-blue-900 hover:bg-green-900 text-white px-6 py-3 rounded-lg font-bold transition">
+                            class="w-full sm:w-auto bg-white hover:bg-green-900 hover:text-white text-black px-6 py-3 rounded-lg font-bold transition">
                         Confirm Order
                     </button>
                 </div>

@@ -64,25 +64,24 @@
   <section class="w-full max-w-6xl mx-auto py-12 lg:py-20 relative">
     <div class="flex flex-col lg:flex-row items-center gap-8">
       <div class="flex-1 text-left">
-        <p class="uppercase text-sm tracking-widest text-pink-300 mb-2">Welcome to</p>
+        <p class="uppercase text-sm tracking-widest text-bold text-pink-300 mb-2">Welcome to</p>
         <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">
-          MINI <span class="text-pink-400">SHOP</span> — Curated tech & treats
+          MINI <span class="text-pink-400">SHOP</span> — Shop Smarter & Live Lighter.
         </h2>
 
         <p class="mt-4 text-gray-200/90 max-w-xl">
-          Mini Shop Lite is a sleek demo store built for your Laravel Full-Stack assessment.
-          Browse curated product, add to cart, checkout, and try our API. Designed to look
-          beautiful on both mobile and desktop — with smooth micro-animations, sliding headlines,
-          and an immersive product carousel.
+          Get your products quickly and reliably through MiniShop Lite.
+          Browse curated products, affordable products without compromising
+          quality. Shop now and experience the easiest way to get what you need.
+          MiniShop gives you the best prices, every day.
         </p>
 
         {{-- Sliding / bouncing animated words (continuous) --}}
         <div class="mt-6">
           <div class="overflow-hidden">
             <div class="sliding-words whitespace-normal md:whitespace-nowrap text-lg md:text-xl font-semibold">
-              <span class="inline-block mr-8">Fast checkout •</span>
-              <span class="inline-block mr-8">Secure checkout •</span>
-              <span class="inline-block mr-8">Mobile-first design •</span>
+              <span class="inline-block mr-8">Best prices•</span>
+              <span class="inline-block mr-2">Secure checkout</span>
             </div>
           </div>
 

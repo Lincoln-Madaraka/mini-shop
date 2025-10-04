@@ -38,10 +38,8 @@ class CartController extends Controller
 
         session(['cart' => $cart]);
 
-        // where to redirect: back to previous page
         return redirect()->back()->with('success', 'Product added to cart!');
-        // OR: go straight to cart page:
-        // return redirect()->route('cart.index')->with('success','Product added to cart!');
+        
     }
 
     public function update(Request $request, Product $product)
@@ -58,7 +56,7 @@ class CartController extends Controller
             session(['cart' => $cart]);
         }
 
-        return redirect()->back()->with('success', 'Cart updated.');
+        return redirect()->back()->with('success');
     }
 
     public function remove(Product $product)

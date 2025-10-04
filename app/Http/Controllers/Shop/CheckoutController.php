@@ -64,7 +64,11 @@ class CheckoutController extends Controller
         session()->forget('cart');
 
         // Redirect with success message
-        return redirect()->route('shop.cart')->with('success', "Order #{$order->id} placed successfully!");
+       return redirect()->route('shop.checkout')->with([
+        'order_success' => true,
+        'order_id' => $order->id,
+        'order_cart_items' => $cart
+    ]);
     }
 
     /**

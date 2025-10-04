@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Product;
 
 class CheckoutController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display the checkout page.
      */
     public function index()
     {
@@ -19,50 +23,56 @@ class CheckoutController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Store a new order and clear the cart.
      */
     public function store(Request $request)
     {
-        //
+        $cart = session()->get('cart', []);
+
+        if (empty($cart)) {
+            return redirect()->route('shop.cart')->with('error', 'Your cart is empty.');
+        }
+
+        // Calculate total
+        $total = collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']);
+
+        // Create the order
+        $order = Order::create([
+            'user_id' => Auth::id(),
+            'total' => $total,
+        ]);
+
+        // Create order items and reduce stock
+        foreach ($cart as $productId => $item) {
+            $product = Product::find($productId);
+
+            if ($product) {
+                OrderItem::create([
+                    'order_id' => $order->id,
+                    'product_id' => $productId,
+                    'qty' => $item['quantity'],
+                    'unit_price' => $item['price'],
+                    'line_total' => $item['price'] * $item['quantity'],
+                ]);
+
+                // Reduce product stock
+                $product->decrement('stock', $item['quantity']);
+            }
+        }
+
+        // Clear the cart
+        session()->forget('cart');
+
+        // Redirect with success message
+        return redirect()->route('shop.cart')->with('success', "Order #{$order->id} placed successfully!");
     }
 
     /**
-     * Display the specified resource.
+     * The other methods can stay empty for now.
      */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    public function create() {}
+    public function show(string $id) {}
+    public function edit(string $id) {}
+    public function update(Request $request, string $id) {}
+    public function destroy(string $id) {}
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Shop\OrderController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Shop\CheckoutController;
 use App\Http\Controllers\Shop\CartController;
@@ -34,6 +35,10 @@ Route::get('/products/{product}', [ShopProductController::class, 'show'])
 Route::middleware('auth')->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('shop.checkout');
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('shop.checkout.store');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/orders', [OrderController::class, 'index'])->name('shop.orders');
 });
 
 Route::post('/cart/{product}/add', [CartController::class, 'add'])->name('cart.add')->middleware('auth');

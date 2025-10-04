@@ -182,7 +182,7 @@
 
                 <x-responsive-nav-link 
                     href="#" 
-                    class="flex items-center gap-2 hover:text-black text-white">
+                    class="flex items-center gap-2 hover:text-black {{ request()->routeIs('admin.orders.index') ? 'bg-yellow-500/30 text-yellow-300' : 'text-white' }}">
                     View Orders
                 </x-responsive-nav-link>
 

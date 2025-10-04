@@ -8,14 +8,14 @@
         <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-pink-500"></div>
     </div>
 
-    <div class="min-h-screen bg-gradient-to-br from-blue-900 via-black to-gray-700 text-white flex">
+    <div class="min-h-screen bg-white text-black flex">
         
        <!-- Sidebar (desktop only) -->
-      <aside class="hidden md:flex flex-col w-64 bg-black/40 backdrop-blur-lg p-6 space-y-4">
-            <h2 class="text-lg font-bold mb-6">Quick Links</h2>
+      <aside class="hidden md:flex flex-col w-64 bg-gray-800 backdrop-blur-lg p-6 space-y-4">
+            <h2 class="text-lg text-yellow-200 font-bold mb-6">Quick Links</h2>
 
             <a href="{{ route('admin.index') }}"
-            class="flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
+            class="flex items-center gap-3 bg-black text-white p-3 rounded-xl font-semibold shadow hover:bg-white hover:text-black hover:opacity-90 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6" />
                 </svg>
@@ -23,7 +23,7 @@
             </a>
 
             <a href="{{ route('admin.product.index') }}"
-            class="flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
+            class="flex items-center gap-3 bg-black hover:bg-white hover:text-black text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6M16 21v-4H8v4h8zM3 13h18" />
                 </svg>
@@ -31,7 +31,7 @@
             </a>
 
             <a href="{{ route('admin.orders.index') }}"
-            class="flex items-center gap-3 bg-gradient-to-r from-pink-600 to-pink-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
+            class="flex items-center gap-3 bg-black hover:bg-white hover:text-black text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.3 5.2a1 1 0 001 1.3h12.6a1 1 0 001-1.3L17 13" />
                 </svg>
@@ -39,7 +39,7 @@
             </a>
 
             <a href="{{ route('admin.users.index') }}"
-            class="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-purple-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
+            class="flex items-center gap-3 bg-black hover:bg-white hover:text-black text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20h6v-2a4 4 0 00-3-3.87M12 12a4 4 0 100-8 4 4 0 000 8z" />
                 </svg>
@@ -59,7 +59,7 @@
          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
 
                     <!-- Total Users -->
-                    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow hover:scale-105 transition">
+                    <div class="bg-gradient-to-br from-blue-900 via-black to-gray-700 text-white backdrop-blur-lg p-6 rounded-2xl shadow hover:scale-105 transition">
                         <h2 class="text-xl font-semibold flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20a4 4 0 00-8 0m8 0H9m6 0v-2a4 4 0 00-8 0v2m12-6a4 4 0 100-8 4 4 0 000 8zm-6 0a4 4 0 100-8 4 4 0 000 8z" />
@@ -70,7 +70,7 @@
                     </div>
 
                     <!-- Total Products -->
-                    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow hover:scale-105 transition">
+                    <div class="bg-gradient-to-br from-blue-900 via-black to-gray-700 text-white backdrop-blur-lg p-6 rounded-2xl shadow hover:scale-105 transition">
                         <h2 class="text-xl font-semibold flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 11h14l1 10H4l1-10z" />
@@ -81,7 +81,7 @@
                     </div>
 
                     <!-- Total Orders -->
-                    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow hover:scale-105 transition">
+                    <div class="bg-gradient-to-br from-blue-900 via-black to-gray-700 text-white backdrop-blur-lg p-6 rounded-2xl shadow hover:scale-105 transition">
                         <h2 class="text-xl font-semibold flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 0l-3-3m3 3l3-3m0 7h.01M4 20h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v11a2 2 0 002 2z" />

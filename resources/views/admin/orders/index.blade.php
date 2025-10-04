@@ -7,14 +7,14 @@
         <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-pink-500"></div>
     </div>
 
-    <div class="min-h-screen bg-gradient-to-br from-blue-900 via-black to-gray-700 text-white flex">
+    <div class="min-h-screen bg-white text-white flex">
 
         <!-- Sidebar (desktop only) -->
         <aside class="hidden md:flex flex-col w-64 bg-black/40 backdrop-blur-lg p-6 space-y-4">
             <h2 class="text-lg font-bold mb-6">Quick Links</h2>
 
             <a href="{{ route('admin.index') }}"
-               class="flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-400 p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
+               class="flex items-center gap-3 bg-black p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
                 Dashboard
             </a>
 

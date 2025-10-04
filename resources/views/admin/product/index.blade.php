@@ -17,7 +17,7 @@
             <a href="{{ route('admin.product.index') }}" class="flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
                 <i class="fas fa-box"></i> Manage Products
             </a>
-            <a href="#" class="flex items-center gap-3 bg-gradient-to-r from-pink-600 to-pink-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
+            <a href="{{ route('admin.orders.index') }}" class="flex items-center gap-3 bg-gradient-to-r from-pink-600 to-pink-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
                 <i class="fas fa-shopping-cart"></i> View Orders
             </a>
             <a href="{{ route('admin.users.index') }}" class="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-purple-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">

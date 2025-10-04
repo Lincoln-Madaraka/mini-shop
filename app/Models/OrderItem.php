@@ -9,7 +9,7 @@ class OrderItem extends Model
 {
     use HasFactory;
 
-     protected $fillable = [
+    protected $fillable = [
         'order_id',
         'product_id',
         'qty',
@@ -17,11 +17,17 @@ class OrderItem extends Model
         'line_total',
     ];
 
+    /**
+     * An item belongs to an order.
+     */
     public function order()
     {
         return $this->belongsTo(Order::class);
     }
 
+    /**
+     * An item belongs to a product.
+     */
     public function product()
     {
         return $this->belongsTo(Product::class);

@@ -53,7 +53,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
-                <span class="font-semibold text-white">Back</span>
+                <span class="font-semibold text-black">Back</span>
             </a>
 
             <div class="max-w-7xl mx-auto mt-12">

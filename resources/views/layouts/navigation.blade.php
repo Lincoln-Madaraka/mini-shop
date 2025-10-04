@@ -46,7 +46,7 @@
                     @endif
                 </a>
 
-                <a href="#" class="flex items-center gap-2 text-white hover:text-pink-400 transition">
+                <a href="{{ route('shop.checkout') }}" class="flex items-center gap-2 text-white hover:text-pink-400 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3v1h6v-1c0-1.657-1.343-3-3-3zm9 4h-1a9 9 0 11-16 0H3" />
                     </svg>
@@ -139,7 +139,7 @@
             </x-responsive-nav-link>
 
             <!-- Checkout -->
-            <x-responsive-nav-link href="#" class="flex items-center gap-2 text-white hover:text-black">
+            <x-responsive-nav-link href="{{ route('shop.checkout') }}" class="flex items-center gap-2 text-white hover:text-black">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3v1h6v-1c0-1.657-1.343-3-3-3zm9 4h-1a9 9 0 11-16 0H3" />
                 </svg>

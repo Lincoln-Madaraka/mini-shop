@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Shop\CheckoutController;
 use App\Http\Controllers\Shop\CartController;
 use App\Http\Controllers\Shop\ProductController as ShopProductController;
 
@@ -30,6 +30,11 @@ Route::middleware(['auth', 'can:admin-login'])->name('admin.')->prefix('/admin')
 Route::get('/products/{product}', [ShopProductController::class, 'show'])
     ->name('products.show')
     ->middleware('auth');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('shop.checkout');
+    Route::post('/checkout', [CheckoutController::class, 'store'])->name('shop.checkout.store');
+});
 
 Route::post('/cart/{product}/add', [CartController::class, 'add'])->name('cart.add')->middleware('auth');
 Route::get('/cart', [CartController::class, 'index'])->name('shop.cart')->middleware('auth');

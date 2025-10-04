@@ -89,7 +89,7 @@
 
                 {{-- Checkout Button --}}
                 <div class="mt-6 text-right">
-                    <a href="#" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-pink-600 text-white font-bold hover:opacity-90 transition">
+                    <a href="{{ route('shop.checkout') }}" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-pink-600 text-white font-bold hover:opacity-90 transition">
                         Proceed to Checkout →
                     </a>
                 </div>

@@ -64,8 +64,8 @@
   <section class="w-full max-w-6xl mx-auto py-12 lg:py-20 relative">
     <div class="flex flex-col lg:flex-row items-center gap-8">
       <div class="flex-1 text-left">
-        <p class="uppercase text-sm tracking-widest text-bold text-pink-300 mb-2">Welcome to</p>
-        <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">
+        <p class="uppercase text-sm tracking-widest text-bold text-pink-300 mb-2 animate-slide-in-left">Welcome to</p>
+        <h2 class="text-4xl md:text-5xl font-extrabold leading-tight animate-slide-in-left animate-bounce-slow">
           MINI <span class="text-pink-400">SHOP</span> — Shop Smarter & Live Lighter.
         </h2>
 
@@ -265,6 +265,21 @@
 
   {{-- Styles & small scripts (keep them at bottom) --}}
   <style>
+    @keyframes slideInLeft {
+  0% { transform: translateX(-50px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+.animate-slide-in-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.animate-bounce-slow {
+  animation: bounceSlow 2s infinite;
+}
   /* Custom keyframes and small component styles */
   @keyframes slide-left {
     0% { transform: translateX(0); }

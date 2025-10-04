@@ -17,17 +17,30 @@
                             </svg>
                             Filter
                         </button>
-                        <div class="absolute right-0 mt-2 w-48 bg-gray-800 text-white rounded-lg shadow-lg p-3 hidden group-hover:block z-50">
-                            <form method="GET" action="{{ route('dashboard') }}">
-                                <select name="filter" class="w-full bg-gray-700 rounded-lg p-2 text-white">
-                                    <option value="">All</option>
-                                    <option value="low_stock" {{ request('filter') == 'low_stock' ? 'selected' : '' }}>Low Stock (&lt;5)</option>
-                                    <option value="high_price" {{ request('filter') == 'high_price' ? 'selected' : '' }}>High Price</option>
-                                    <option value="low_price" {{ request('filter') == 'low_price' ? 'selected' : '' }}>Low Price</option>
-                                </select>
-                                <button type="submit" class="mt-2 w-full bg-pink-600 hover:bg-pink-500 rounded-lg py-2 font-bold">Apply</button>
-                            </form>
-                        </div>
+                        <div class="absolute right-0 mt-2 w-64 bg-gray-800 text-white rounded-lg shadow-lg p-3 hidden group-hover:block z-50">
+                        <form method="GET" action="{{ route('dashboard') }}">
+                            <!-- Existing Filters -->
+                            <select name="filter" class="w-full bg-gray-700 rounded-lg p-2 text-white mb-2">
+                                <option value="">All</option>
+                                <option value="low_stock" {{ request('filter') == 'low_stock' ? 'selected' : '' }}>Low Stock (&lt;5)</option>
+                                <option value="high_price" {{ request('filter') == 'high_price' ? 'selected' : '' }}>High Price</option>
+                                <option value="low_price" {{ request('filter') == 'low_price' ? 'selected' : '' }}>Low Price</option>
+                            </select>
+
+                            <!-- Price Range Filter -->
+                            <div class="flex gap-2 mb-2">
+                                <input type="number" name="min_price" placeholder="Min Ksh" 
+                                    value="{{ request('min_price') }}" 
+                                    class="w-1/2 bg-gray-700 rounded-lg p-2 text-white" min="0">
+                                <input type="number" name="max_price" placeholder="Max Ksh" 
+                                    value="{{ request('max_price') }}" 
+                                    class="w-1/2 bg-gray-700 rounded-lg p-2 text-white" min="0">
+                            </div>
+
+                            <button type="submit" class="w-full bg-pink-600 hover:bg-pink-500 rounded-lg py-2 font-bold">Apply</button>
+                        </form>
+                    </div>
+
                     </div>
                 </div>
 

@@ -7,7 +7,7 @@
         <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-pink-500"></div>
     </div>
 
-    <div class="min-h-screen bg-gradient-to-br from-blue-900 via-black to-gray-700 text-white flex">
+    <div class="min-h-screen bg-white text-black flex">
 
         <!-- Sidebar (desktop only) -->
       <aside class="hidden md:flex flex-col w-64 bg-gray-800 backdrop-blur-lg p-6 space-y-4">
@@ -51,13 +51,13 @@
             <div class="max-w-7xl mx-auto">
 
                 <!-- Page Title -->
-                <h1 class="text-3xl text-white font-bold mb-8">Orders</h1>
+                <h1 class="text-3xl text-black font-bold mb-8">Orders</h1>
 
                 <!-- Orders Table (desktop only) -->
-                <div class="hidden md:block overflow-x-auto bg-gradient-to-br from-blue-900 via-black to-gray-700">
+                <div class="hidden md:block overflow-x-auto bg-white">
                     <table class="min-w-full bg-white/10 backdrop-blur-lg rounded-xl shadow">
                         <thead>
-                            <tr class="bg-white/20 text-left text-sm uppercase text-gray-200">
+                            <tr class="bg-white/20 text-left text-sm uppercase text-blue-800">
                                 <th class="px-6 py-3">Order ID</th>
                                 <th class="px-6 py-3">Customer</th>
                                 <th class="px-6 py-3">Total</th>
@@ -91,9 +91,9 @@
                 </div>
 
                 <!-- Orders as Cards (mobile only) -->
-                <div class="md:hidden space-y-6 bg-gradient-to-br from-blue-900 via-black to-gray-700">
+                <div class="md:hidden space-y-6 bg-white">
                     @forelse ($orders as $order)
-                        <div class="bg-white/10 backdrop-blur-lg p-4 rounded-2xl shadow">
+                        <div class="bg-gray-100 backdrop-blur-lg p-4 rounded-2xl shadow">
                             <h2 class="text-lg font-semibold mb-2">Order #{{ $order->id }}</h2>
                             <p><span class="font-semibold">Customer:</span> {{ $order->user->name ?? 'N/A' }}</p>
                             <p><span class="font-semibold">Total:</span> KES {{ number_format($order->total, 2) }}</p>

@@ -7,7 +7,6 @@
     </div>
 
     <div class="min-h-screen bg-white text-black flex">
-
         <main class="flex-1 p-6 relative">
 
             <!-- Back Button -->
@@ -19,7 +18,6 @@
             </a>
 
             <div class="max-w-3xl mx-auto mt-12">
-
                 <h1 class="text-3xl font-bold mb-8">Add Product</h1>
 
                 <x-session-message />
@@ -27,54 +25,71 @@
                 <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data" class="bg-white/10 backdrop-blur-lg p-6 rounded-xl space-y-4">
                     @csrf
 
-                    <!-- Product Name -->
                     <div>
                         <label class="block mb-1 font-semibold">Name</label>
                         <input type="text" name="name" value="{{ old('name') }}" class="w-full rounded px-3 py-2 text-black" required>
                         @error('name') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
                     </div>
 
-                    <!-- Price -->
                     <div>
                         <label class="block mb-1 font-semibold">Price ($)</label>
                         <input type="number" name="price" value="{{ old('price') }}" class="w-full rounded px-3 py-2 text-black" min="0.01" step="0.01" required>
                         @error('price') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
                     </div>
 
-                    <!-- Stock -->
                     <div>
                         <label class="block mb-1 font-semibold">Stock</label>
                         <input type="number" name="stock" value="{{ old('stock') }}" class="w-full rounded px-3 py-2 text-black" min="0" required>
                         @error('stock') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
                     </div>
 
-                    <!-- Description -->
                     <div>
                         <label class="block mb-1 font-semibold">Description</label>
                         <textarea name="description" class="w-full rounded px-3 py-2 text-black">{{ old('description') }}</textarea>
                         @error('description') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
                     </div>
 
-                    <!-- Image Upload -->
-                    <div class="cursor-pointer">
+                    <div>
                         <label class="block mb-1 font-semibold">Product Image</label>
-                        <input type="file" name="image" accept="image/*" class="w-full rounded px-3 py-2 text-black cursor-pointer">
+                        <input type="file" name="image" accept="image/*" id="imageInput" class="w-full rounded px-3 py-2 text-black cursor-pointer">
                         @error('image') <p class="text-red-500 text-sm mt-1">{{ $message }}</p> @enderror
+                        <!-- Image preview -->
+                        <div id="imagePreviewContainer" class="mt-4 hidden">
+                            <p class="text-white mb-2">Preview:</p>
+                            <img id="imagePreview" src="" alt="Image Preview" class="w-32 h-32 object-cover rounded-xl shadow">
+                        </div>
                     </div>
 
                     <div class="flex justify-end">
-                        <button type="submit" class="px-6 py-2 bg-blue-600 rounded text-white font-semibold hover:bg-blue-500 transition">Add Product</button>
+                        <button type="submit" class="px-6 py-2 bg-blue-600 rounded text-white font-semibold hover:bg-blue-500 transition cursor-pointer">Add Product</button>
                     </div>
                 </form>
             </div>
-
         </main>
     </div>
 
-    <!-- Preloader Script -->
     <script>
         window.addEventListener('load', () => {
             document.getElementById('preloader').style.display = 'none';
+
+            const imageInput = document.getElementById('imageInput');
+            const imagePreview = document.getElementById('imagePreview');
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+
+            imageInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        imagePreview.src = e.target.result;
+                        imagePreviewContainer.classList.remove('hidden');
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    imagePreviewContainer.classList.add('hidden');
+                    imagePreview.src = '';
+                }
+            });
         });
     </script>
 </x-app-layout>

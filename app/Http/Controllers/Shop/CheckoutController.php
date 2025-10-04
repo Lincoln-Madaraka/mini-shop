@@ -12,7 +12,10 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        //
+        $cart = session()->get('cart', []);
+        $total = collect($cart)->sum(fn($item) => $item['price'] * $item['quantity']);
+
+        return view('shop.checkout', compact('cart', 'total'));
     }
 
     /**

@@ -40,7 +40,7 @@
                         Dashboard
                     </a>
 
-                    <a href="{{ route('shop.cart') }}" class="relative flex items-center gap-2 {{ request()->routeIs('shop.cart') ? 'bg-yellow-500/30 text-yellow-300' : 'text-white' }} hover:text-pink-400 transition">
+                    <a href="{{ route('shop.cart') }}" class="relative flex items-center gap-2 {{ request()->routeIs('shop.cart') ? 'text-yellow-300' : 'text-white' }} hover:text-pink-400 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.3 5.2a1 1 0 001 1.3h12.6a1 1 0 001-1.3L17 13M7 13l10 0" />
                         </svg>

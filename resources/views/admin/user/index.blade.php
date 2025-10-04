@@ -65,10 +65,10 @@
                     <table class="table-fixed w-full text-left border-collapse">
                         <thead class="bg-black/30">
                             <tr>
-                                <th class="w-[8%] py-4 px-6 text-sm font-semibold uppercase border-b border-gray-700">ID</th>
-                                <th class="w-[42%] py-4 px-6 text-sm font-semibold uppercase border-b border-gray-700">Name</th>
-                                <th class="w-[20%] py-4 px-6 text-sm font-semibold uppercase border-b border-gray-700">Role</th>
-                                <th class="w-[30%] py-4 px-6 text-sm font-semibold uppercase border-b border-gray-700 text-center">Manage Users</th>
+                                <th class="w-[8%] py-4 px-6 text-sm font-semibold uppercase border-b border-gray-700 text-white">ID</th>
+                                <th class="w-[42%] py-4 px-6 text-sm font-semibold uppercase border-b border-gray-700 text-white">Name</th>
+                                <th class="w-[20%] py-4 px-6 text-sm font-semibold uppercase border-b border-gray-700 text-white">Role</th>
+                                <th class="w-[30%] py-4 px-6 text-sm font-semibold uppercase border-b border-gray-700 text-center text-white">Manage Users</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -7,7 +7,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
-            <span class="font-semibold">Back</span>
+            <span class="font-semibold text-black">Back</span>
         </a>
 
         <div class="max-w-4xl mx-auto w-full mt-12 sm:mt-0">
@@ -36,12 +36,33 @@
                 </div>
 
                 {{-- Confirm Order Button --}}
-                <form method="POST" action="{{ route('shop.checkout.store') }}" class="mt-4">
-                    @csrf
-                    <button type="submit" class="w-full bg-pink-600 hover:bg-pink-500 text-white px-6 py-3 rounded-lg font-bold transition">
+               <form method="POST" action="{{ route('shop.checkout.store') }}" class="mt-4">
+                @csrf
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <!-- Payment Options -->
+                    <div class="flex items-center gap-3">
+                        <!-- Mpesa (always visible) -->
+                        <img src="{{ asset('import/assets/mpesa.jpeg') }}" 
+                            alt="Mpesa" 
+                            class="h-8 w-auto">
+
+                        <!-- Mastercard + Paypal (hidden on mobile, visible sm+) -->
+                        <img src="{{ asset('import/assets/mastercard.png') }}" 
+                            alt="Mastercard" 
+                            class="h-8 w-auto">
+                        <img src="{{ asset('import/assets/paypal.png') }}" 
+                            alt="PayPal" 
+                            class="h-8 w-auto">
+                    </div>
+
+                    <!-- Confirm Order Button -->
+                    <button type="submit" 
+                            class="w-full sm:w-auto bg-blue-900 hover:bg-green-900 text-white px-6 py-3 rounded-lg font-bold transition">
                         Confirm Order
                     </button>
-                </form>
+                </div>
+            </form>
+
 
             </div>
         </div>

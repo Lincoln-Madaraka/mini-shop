@@ -6,7 +6,7 @@
             <div class="bg-gradient-to-br from-blue-900 via-black to-gray-700 p-4 rounded-2xl mb-6 shadow-lg">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-white font-bold">Checkout ID #{{ $order->id }}</span>
-                    <span class="text-yellow-400 font-semibold">Total: Ksh {{ number_format($order->total, 2) }}</span>
+                    <span class="text-yellow-400 font-semibold">Total: KES {{ number_format($order->total, 2) }}</span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -22,7 +22,7 @@
                             </div>
 
                             <div class="text-yellow-500 font-bold">
-                                Ksh {{ number_format($item->line_total, 2) }}
+                                KES {{ number_format($item->line_total, 2) }}
                             </div>
                         </div>
                     @endforeach

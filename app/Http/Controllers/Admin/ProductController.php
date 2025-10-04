@@ -42,7 +42,10 @@ class ProductController extends Controller
         return redirect()->route('admin.product.index')
                          ->with('success', 'Product added successfully!');
     }
-
+    public function edit(Product $product)
+    {
+        return view('admin.product.edit', compact('product'));
+    }
     // Update product
     public function update(Request $request, Product $product)
     {

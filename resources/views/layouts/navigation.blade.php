@@ -53,7 +53,7 @@
                     Checkout
                 </a>
 
-                <a href="#" class="flex items-center gap-2 text-white hover:text-pink-400 transition">
+                <a href="{{ route('shop.orders') }}" class="flex items-center gap-2 text-white hover:text-pink-400 transition">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2h6v2a2 2 0 002 2h2v2H5v-2h2a2 2 0 002-2zm0-6V9a3 3 0 016 0v2" />
                     </svg>
@@ -147,7 +147,7 @@
             </x-responsive-nav-link>
 
             <!-- My Orders -->
-            <x-responsive-nav-link href="#" class="flex items-center gap-2 text-white hover:text-black">
+            <x-responsive-nav-link href="{{ route('shop.orders') }}" class="flex items-center gap-2 text-white hover:text-black">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2h6v2a2 2 0 002 2h2v2H5v-2h2a2 2 0 002-2zm0-6V9a3 3 0 016 0v2" />
                 </svg>

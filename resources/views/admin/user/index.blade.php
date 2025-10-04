@@ -7,7 +7,7 @@
         <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-pink-500"></div>
     </div>
 
-    <div class="min-h-screen bg-gradient-to-br from-blue-900 via-black to-gray-900 text-white flex">
+    <div class="min-h-screen bg-white text-black flex">
         <!-- Sidebar (desktop only) -->
         <aside class="hidden md:flex flex-col w-64 bg-gray-800 backdrop-blur-lg p-6 space-y-4">
             <h2 class="text-lg text-yellow-200 font-bold mb-6">Quick Links</h2>
@@ -46,7 +46,7 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 p-6 relative">
+        <main class="flex-1 p-6 relative bg-white">
             <!-- Back Button -->
             <a href="{{ route('admin.index') }}" 
                class="absolute top-4 left-4 flex items-center gap-1 text-pink-400 hover:text-pink-300 transition">
@@ -62,7 +62,7 @@
                 <x-session-message />
 
                 <!-- Users Table (desktop) -->
-                <div class="hidden md:block bg-white/10 backdrop-blur-lg rounded-xl overflow-auto">
+                <div class="hidden md:block bg-gradient-to-br from-blue-900 via-black to-gray-900 backdrop-blur-lg rounded-xl overflow-auto text-white">
                     <table class="text-left w-full border-collapse">
                         <thead>
                             <tr>
@@ -92,9 +92,9 @@
                 </div>
 
                 <!-- Users Cards (mobile) -->
-                <div class="md:hidden space-y-4">
+                <div class="md:hidden space-y-4 bg-gradient-to-br from-blue-900 via-black to-gray-900 p-4 rounded-xl text-white">
                     @foreach ($users as $user)
-                        <div class="bg-white/10 backdrop-blur-lg p-4 rounded-xl flex flex-col gap-2">
+                        <div class="bg-white/10 backdrop-blur-lg p-4 rounded-xl flex flex-col gap-2 bg-white">
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center gap-2">
                                     <img src="{{ asset('import/assets/profile.png') }}" alt="Avatar" class="w-10 h-10 rounded-full">

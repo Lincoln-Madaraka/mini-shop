@@ -6,24 +6,8 @@
         <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-pink-500"></div>
     </div>
 
-    <div class="min-h-screen bg-gradient-to-br from-blue-900 via-black to-gray-900 text-white flex">
+    <div class="min-h-screen bg-gray-100 text-black flex">
 
-        <!-- Sidebar -->
-        <aside class="hidden md:flex flex-col w-64 bg-black/40 backdrop-blur-lg p-6 space-y-4">
-            <h2 class="text-lg font-bold mb-6">Quick Links</h2>
-            <a href="{{ route('admin.index') }}" class="flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
-                <i class="fas fa-box"></i> Dashboard
-            </a>
-            <a href="{{ route('admin.product.index') }}" class="flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
-                <i class="fas fa-box"></i> Manage Products
-            </a>
-            <a href="#" class="flex items-center gap-3 bg-gradient-to-r from-pink-600 to-pink-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
-                <i class="fas fa-shopping-cart"></i> View Orders
-            </a>
-            <a href="{{ route('admin.users.index') }}" class="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-purple-400 text-white p-3 rounded-xl font-semibold shadow hover:opacity-90 transition">
-                <i class="fas fa-users"></i> View Users
-            </a>
-        </aside>
 
         <!-- Main Content -->
         <main class="flex-1 p-6 relative">
@@ -33,7 +17,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
-                <span class="font-semibold">Back</span>
+                <span class="font-semibold text-black">Back</span>
             </a>
 
             <div class="max-w-3xl mx-auto mt-12">

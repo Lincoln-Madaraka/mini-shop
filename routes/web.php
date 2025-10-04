@@ -26,6 +26,9 @@ Route::middleware(['auth', 'can:admin-login'])->name('admin.')->prefix('/admin')
         Route::resource('product', ProductController::class);
         Route::resource('users', UserController::class);
         Route::resource('orders', AdminOrderController::class)->only(['index', 'show']);
+
+         Route::post('/users/{id}/make-admin', [UserController::class, 'makeAdmin'])->name('users.makeAdmin');
+    Route::delete('/users/{user}/delete', [UserController::class, 'destroy'])->name('users.destroy');
     });
     Route::get('/show-single-assigned-product/{id}', [ProductController::class, 'showSingleAssignedProduct'])->name('single_assign_product.show');
     Route::post('/complete-product/{id}', [ProductController::class, 'productCompleteButton'])->name('complete_product.store');

@@ -41,7 +41,15 @@ class UserController extends Controller
 
         return view('admin.user.edit', compact('user', 'roles'));
     }
+    
+    public function makeAdmin($id)
+    {
+        $user = User::findOrFail($id);
+        $user->role = 'admin';
+        $user->save();
 
+        return redirect()->route('admin.users.index')->with('success', 'User promoted to Admin!');
+    }
 
     public function update(Request $request, User $user)
     {
@@ -54,6 +62,7 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+    
         $user->delete();
 
         return to_route('admin.users.index')->with('message', 'User Deleted !');

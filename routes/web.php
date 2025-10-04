@@ -11,8 +11,7 @@ use App\Http\Controllers\Shop\CheckoutController;
 use App\Http\Controllers\Shop\CartController;
 use App\Http\Controllers\Shop\ProductController as ShopProductController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
-use App\Http\Controllers\Api\OrderController as ApiOrderController; 
-use App\Http\Controllers\Api\ProductController as ApiProductController;
+
 
 
 Route::get('/', function () {
@@ -58,11 +57,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-Route::get('/products', [ApiProductController::class, 'index']);
-
-Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/orders', [ApiOrderController::class, 'store']);
 });
 
 

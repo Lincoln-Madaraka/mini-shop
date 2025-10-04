@@ -3,20 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 
 class AdminController extends Controller
 {
-    public function index()
+   public function index()
     {
-        if (auth()->user()->role === "admin") {
+        $usersCount = User::count();
+        $productCount = Product::count();
+        $ordersCount = Order::count();
 
-            $users = User::count();
-            $salaries = Product::count();
-
-            return view('admin.index', compact('users', 'salaries'));
-        } 
+        return view('admin.index', compact('usersCount', 'productCount', 'ordersCount'));
     }
 }

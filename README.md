@@ -7,7 +7,7 @@ Project Tree - My Key Folders & Files
                 │   │   ├── Controllers/
                 │   │   │   ├── Admin/          # Admin CRUD: products, users, orders
                 │   │   │   ├── Auth/           # Login/Register controllers (Breeze)
-                │   │   │   └── Shop/           # Customer shop/cart/checkout
+                │   │   │   └── Shop/           # Customer shop/cart/checkout files 
                 │   │   │       ├── CartController.php       # Add/remove items from session cart
                 │   │   │       ├── CheckoutController.php   # Handles checkout, order creation
                 │   │   │       ├── OrderController.php      # Customer order view/API

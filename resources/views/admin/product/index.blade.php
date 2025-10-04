@@ -6,7 +6,7 @@
         <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-pink-500"></div>
     </div>
 
-    <div class="min-h-screen bg-gradient-to-br from-blue-900 via-black to-gray-900 text-white flex">
+    <div class="min-h-screen bg-white text-black flex">
 
         <!-- Sidebar -->
           <aside class="hidden md:flex flex-col w-64 bg-gray-800 backdrop-blur-lg p-6 space-y-4">
@@ -53,7 +53,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
-                <span class="font-semibold">Back</span>
+                <span class="font-semibold text-black">Back</span>
             </a>
 
             <div class="max-w-7xl mx-auto mt-12">
@@ -104,7 +104,7 @@
                                     </td>
 
                                     <!-- Price -->
-                                    <td class="py-4 px-6 border-b border-grey-light">${{ $product->price }}</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">KES {{ $product->price }}</td>
 
                                     <!-- Stock -->
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $product->stock }}</td>
@@ -163,15 +163,15 @@
                                     @endif
                                     <span class="font-semibold">{{ $product->name }}</span>
                                 </div>
-                                <span class="text-gray-200">${{ $product->price }}</span>
+                                <span class="text-black">KES {{ $product->price }}</span>
                             </div>
-                            <div class="text-gray-300">Stock: {{ $product->stock }}</div>
+                            <div class="text-black">Stock: {{ $product->stock }}</div>
                             <div class="flex gap-2 mt-2">
-                                <button onclick="location.href='{{ route('admin.product.edit', $product->id) }}';" class="flex-1 px-4 py-1 bg-green-600 rounded text-white">Edit</button>
+                                <button onclick="location.href='{{ route('admin.product.edit', $product->id) }}';" class="flex-1 px-4 py-1 bg-green-600 rounded text-white hover:opacity-80">Edit</button>
                                 <form method="POST" action="{{ route('admin.product.destroy', $product->id) }}" class="flex-1" onsubmit="return confirm('Are you sure?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="w-full px-4 py-1 bg-red-600 rounded text-white">Delete</button>
+                                    <button type="submit" class="w-full px-4 py-1 bg-red-600 rounded text-white hover:opacity-80">Delete</button>
                                 </form>
                             </div>
                         </div>

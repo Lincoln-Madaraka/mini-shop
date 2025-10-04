@@ -15,7 +15,7 @@
             <h2 class="text-lg text-yellow-200 font-bold mb-6">Quick Links</h2>
 
             <a href="{{ route('admin.index') }}"
-            class="flex items-center gap-3 bg-black text-white p-3 rounded-xl font-semibold shadow hover:bg-white hover:text-black hover:opacity-90 transition">
+            class="flex items-center gap-3 p-3 rounded-xl font-semibold shadow bg-white text-black hover:opacity-90 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6" />
                 </svg>

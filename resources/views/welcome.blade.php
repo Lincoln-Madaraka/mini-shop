@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
+        
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Styles / Scripts -->
@@ -31,7 +32,7 @@
                 <!--My Logo Text -->
                 <div class="flex flex-col space-y-0">
                     <span class="text-xs tracking-widest font-bold text-pink-400">MINI</span>
-                    <h1 class="text-2xl font-bold text-white">SHOP</h1>
+                    <h1 class="text-2xl font-bold text-white">SHOP<sup class="text-[0.45rem] ml-1 align-super">LITE</sup></h1>
                 </div>
             </a>
                 <a href="{{ url('/') }}" class="hidden sm:flex flex-col leading-none">
@@ -39,7 +40,7 @@
                     <h1 class="text-2xl font-bold text-white flex items-center">
                         SH
                         <img src="{{ asset('import/assets/logo.png') }}" alt="O" class="w-6 h-6 mx-1">
-                        P
+                        P<sup class="text-[0.45rem] ml-1 align-super">LITE</sup>
                     </h1>
                 </a>
             </div>

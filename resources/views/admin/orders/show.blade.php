@@ -26,15 +26,15 @@
                 <h1 class="text-3xl font-bold mb-4">Order #{{ $order->id }}</h1>
 
                 <!-- Customer Info -->
-                <div class="bg-gradient-to-br from-blue-900 via-black to-gray-700 backdrop-blur-lg p-6 rounded-2xl shadow">
-                    <h3 class="text-lg font-semibold mb-3 text-pink-400">Customer Info</h3>
-                    <p class="text-white font-medium">{{ $order->user->name ?? 'Guest' }}</p>
-                    <p class="text-gray-400">{{ $order->user->email ?? 'N/A' }}</p>
+                <div class="bg-gray-300 backdrop-blur-lg p-6 rounded-2xl shadow">
+                    <h3 class="text-lg font-bold mb-3 text-black">Customer Info</h3>
+                    <p class="text-black font-medium">{{ $order->user->name ?? 'Guest' }}</p>
+                    <p class="text-gray-900">{{ $order->user->email ?? 'N/A' }}</p>
                 </div>
 
                 <!-- Items Table (desktop) -->
-                <div class="hidden md:block bg-gradient-to-br from-blue-900 via-black to-gray-700 backdrop-blur-lg p-6 rounded-2xl shadow overflow-x-auto">
-                    <h3 class="text-lg font-semibold mb-3 text-pink-400">Order Items</h3>
+                <div class="hidden md:block bg-gray-300 backdrop-blur-lg p-6 rounded-2xl shadow overflow-x-auto">
+                    <h3 class="text-lg font-bold mb-3 text-black">Order Items</h3>
                     <table class="w-full text-left">
                         <thead>
                             <tr class="bg-gradient-to-r from-blue-700 to-blue-500 text-white">
@@ -46,7 +46,7 @@
                                 <th class="px-4 py-3">Stock</th>
                             </tr>
                         </thead>
-                        <tbody class="text-white divide-y divide-gray-700">
+                        <tbody class="text-black divide-y divide-gray-700">
                             @foreach ($order->items as $item)
                                 <tr class="hover:bg-white/5">
                                     <td class="px-4 py-3">
@@ -59,7 +59,7 @@
                                     <td class="px-4 py-3">KES {{ number_format($item->line_total, 2) }}</td>
                                     <td class="px-4 py-3">
                                         @if ($item->product->stock > 0)
-                                            <span class="bg-green-600 text-white px-3 py-1 rounded-xl text-sm shadow">
+                                            <span class="bg-red-600 text-white px-3 py-1 rounded-xl text-sm shadow">
                                                 In Stock ({{ $item->product->stock }})
                                             </span>
                                         @else
@@ -77,20 +77,20 @@
                 <!-- Items as Cards (mobile) -->
                 <div class="md:hidden space-y-4">
                     @foreach ($order->items as $item)
-                        <div class="bg-gradient-to-br from-blue-900 via-black to-gray-700 backdrop-blur-lg p-4 rounded-2xl shadow">
+                        <div class="bg-gray-300 backdrop-blur-lg p-4 rounded-2xl shadow">
                             <div class="flex items-center gap-3 mb-2">
                                 <img src="{{ asset('storage/' . $item->product->image) }}" 
                                      class="h-16 w-16 rounded-xl object-cover shadow" />
                                 <div>
-                                    <p class="font-semibold text-white">{{ $item->product->name }}</p>
-                                    <p class="text-gray-400">Qty: {{ $item->qty }}</p>
+                                    <p class="font-semibold text-black">{{ $item->product->name }}</p>
+                                    <p class="text-gray-700">Qty: {{ $item->qty }}</p>
                                 </div>
                             </div>
-                            <p class="text-white">Unit Price: KES {{ number_format($item->unit_price, 2) }}</p>
-                            <p class="text-white">Line Total: KES {{ number_format($item->line_total, 2) }}</p>
+                            <p class="text-red-800">Unit Price: KES {{ number_format($item->unit_price, 2) }}</p>
+                            <p class="text-black">Line Total: KES {{ number_format($item->line_total, 2) }}</p>
                             <p>
                                 @if ($item->product->stock > 0)
-                                    <span class="bg-green-600 text-white px-3 py-1 rounded-xl text-sm shadow">
+                                    <span class="bg-red-600 text-white px-3 py-1 rounded-xl text-sm shadow">
                                         In Stock ({{ $item->product->stock }})
                                     </span>
                                 @else
@@ -104,10 +104,10 @@
                 </div>
 
                 <!-- Order Summary -->
-                <div class="bg-gradient-to-br from-blue-900 via-black to-gray-700 backdrop-blur-lg p-6 rounded-2xl shadow">
-                    <h3 class="text-lg font-semibold mb-3 text-pink-400">Order Summary</h3>
-                    <p class="text-white font-medium">Total: KES {{ number_format($order->total, 2) }}</p>
-                    <p class="text-gray-400">Placed: {{ $order->created_at->format('M d, Y H:i') }}</p>
+                <div class="bg-gray-300 backdrop-blur-lg p-6 rounded-2xl shadow">
+                    <h3 class="text-lg font-bold mb-3 text-black">Order Summary</h3>
+                    <p class="text-black font-medium">Total: KES {{ number_format($order->total, 2) }}</p>
+                    <p class="text-gray-700">Placed: {{ $order->created_at->format('M d, Y H:i') }}</p>
                 </div>
 
             </div>

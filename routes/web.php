@@ -10,6 +10,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Shop\CheckoutController;
 use App\Http\Controllers\Shop\CartController;
 use App\Http\Controllers\Shop\ProductController as ShopProductController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,6 +25,7 @@ Route::middleware(['auth', 'can:admin-login'])->name('admin.')->prefix('/admin')
     Route::middleware('can:admin-only')->group(function () {
         Route::resource('product', ProductController::class);
         Route::resource('users', UserController::class);
+        Route::resource('orders', AdminOrderController::class)->only(['index', 'show']);
     });
     Route::get('/show-single-assigned-product/{id}', [ProductController::class, 'showSingleAssignedProduct'])->name('single_assign_product.show');
     Route::post('/complete-product/{id}', [ProductController::class, 'productCompleteButton'])->name('complete_product.store');

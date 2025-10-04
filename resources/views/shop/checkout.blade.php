@@ -13,7 +13,7 @@
         <div class="max-w-4xl mx-auto w-full mt-12 sm:mt-0">
             <h2 class="text-3xl font-bold mb-6 text-black">Checkout</h2>
 
-            <div class="bg-gradient-to-br from-blue-900 via-black to-gray-700 p-6 rounded-2xl shadow-lg flex flex-col gap-4">
+            <div class="bg-gray-800 p-6 rounded-2xl shadow-lg flex flex-col gap-4">
 
                 {{-- Check if cart is empty --}}
                 @if(empty($cart) || count($cart) === 0)
@@ -25,19 +25,19 @@
                             Please add items to your cart before checking out.
                         </p>
                         <a href="{{ route('dashboard') }}" 
-                           class="inline-block bg-pink-600 hover:bg-pink-500 text-white px-6 py-3 rounded-lg font-bold transition">
+                           class="inline-block bg-red-600 hover:bg-red-500 text-white px-6 py-3 rounded-lg font-bold transition">
                             Browse Products
                         </a>
                     </div>
                 @else
                     {{-- Cart Items Review --}}
                     @foreach($cart as $item)
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-black/30 p-4 rounded-lg">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-gray-800 p-4 rounded-lg">
                             <div class="flex items-center gap-4">
                                 <img src="{{ $item['image'] ? asset('storage/'.$item['image']) : asset('images/no-image.png') }}" class="w-20 h-20 object-cover rounded" alt="">
                                 <div>
                                     <div class="font-semibold text-white">{{ $item['name'] }}</div>
-                                    <div class="text-gray-300 text-sm">Qty: {{ $item['quantity'] }}</div>
+                                    <div class="text-gray-200 text-sm">Qty: {{ $item['quantity'] }}</div>
                                 </div>
                             </div>
                             <div class="text-yellow-500 font-bold text-lg mt-2 sm:mt-0">Ksh {{ number_format($item['price'] * $item['quantity'], 2) }}</div>

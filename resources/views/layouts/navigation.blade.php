@@ -33,14 +33,14 @@
             <!-- Desktop Nav -->
             <div class="hidden sm:flex sm:items-center sm:gap-10">
                 @if(Auth::user() && Auth::user()->role !== 'admin')
-                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2 text-white hover:text-pink-400 transition">
+                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2  {{ request()->routeIs('dashboard') ? 'text-yellow-300' : 'text-white' }} hover:text-pink-400 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6" />
                         </svg>
                         Dashboard
                     </a>
 
-                    <a href="{{ route('shop.cart') }}" class="relative flex items-center gap-2 text-white hover:text-pink-400 transition">
+                    <a href="{{ route('shop.cart') }}" class="relative flex items-center gap-2 {{ request()->routeIs('shop.cart') ? 'bg-yellow-500/30 text-yellow-300' : 'text-white' }} hover:text-pink-400 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.3 5.2a1 1 0 001 1.3h12.6a1 1 0 001-1.3L17 13M7 13l10 0" />
                         </svg>
@@ -52,14 +52,14 @@
                         @endif
                     </a>
 
-                    <a href="{{ route('shop.checkout') }}" class="flex items-center gap-2 text-white hover:text-pink-400 transition">
+                    <a href="{{ route('shop.checkout') }}" class="flex items-center gap-2 {{ request()->routeIs('shop.checkout') ? 'text-yellow-300' : 'text-white' }} hover:text-pink-400 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3v1h6v-1c0-1.657-1.343-3-3-3zm9 4h-1a9 9 0 11-16 0H3" />
                         </svg>
                         Checkout
                     </a>
 
-                    <a href="{{ route('shop.orders') }}" class="flex items-center gap-2 text-white hover:text-pink-400 transition">
+                    <a href="{{ route('shop.orders') }}" class="flex items-center gap-2 {{ request()->routeIs('shop.orders') ? 'text-yellow-300' : 'text-white' }} hover:text-pink-400 transition">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2h6v2a2 2 0 002 2h2v2H5v-2h2a2 2 0 002-2zm0-6V9a3 3 0 016 0v2" />
                         </svg>

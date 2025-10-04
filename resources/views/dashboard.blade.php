@@ -1,15 +1,12 @@
 <x-app-layout>
     <div class="min-h-screen bg-cream text-black flex flex-col" x-data="{ open: false, selectedProduct: null, filterOpen: false }">
 
-        <!-- Main Content -->
+        <!-- My main Content -->
         <main class="flex-1 p-6">
             <div class="max-w-7xl mx-auto">
-
-                <!-- Header + Filter Bar -->
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
                     <h2 class="text-3xl font-bold text-black">Product Catalog</h2>
 
-                    <!-- Filter Button -->
                     <div class="relative">
                         <button 
                             @click="filterOpen = !filterOpen" 
@@ -28,7 +25,6 @@
                             class="absolute right-0 mt-2 w-64 bg-gray-800 text-white rounded-lg shadow-lg p-3 z-50">
                             
                             <form method="GET" action="{{ route('dashboard') }}">
-                                <!-- Existing Filters -->
                                 <select name="filter" class="w-full bg-gray-700 rounded-lg p-2 text-white mb-2">
                                     <option value="">All</option>
                                     <option value="low_stock" {{ request('filter') == 'low_stock' ? 'selected' : '' }}>Low Stock (&lt;5)</option>
@@ -36,7 +32,6 @@
                                     <option value="low_price" {{ request('filter') == 'low_price' ? 'selected' : '' }}>Low Price</option>
                                 </select>
 
-                                <!-- Price Range Filter -->
                                 <div class="flex gap-2 mb-2">
                                     <input type="number" name="min_price" placeholder="Min Ksh" 
                                         value="{{ request('min_price') }}" 
@@ -46,7 +41,7 @@
                                         class="w-1/2 bg-gray-700 rounded-lg p-2 text-white" min="0">
                                 </div>
 
-                                <button type="submit" class="w-full bg-pink-600 hover:bg-pink-500 rounded-lg py-2 font-bold">Apply</button>
+                                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-900 rounded-lg py-2 font-bold">Apply</button>
                             </form>
                         </div>
                     </div>
@@ -64,33 +59,53 @@
                 @else
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         @foreach($availableProducts as $product)
-                            <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow hover:scale-105 transition flex flex-col bg-gradient-to-br from-blue-900 via-black to-gray-700">
-                                <!-- Product Image -->
+                            <!-- Product Card -->
+                            <div
+                                class="bg-[#f5f2e9]/95 backdrop-blur-lg p-6 rounded-2xl shadow-lg border border-gray-300 
+                                       hover:scale-[1.03] hover:shadow-2xl transition-transform duration-300 ease-out 
+                                       flex flex-col text-gray-900">
+
                                 @if($product->image)
-                                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="rounded-xl mb-4 h-40 w-full object-cover text-white">
+                                    <img src="{{ asset('storage/' . $product->image) }}" 
+                                         alt="{{ $product->name }}" 
+                                         class="rounded-xl mb-4 h-40 w-full object-cover transition-transform duration-500 hover:scale-105">
                                 @else
-                                    <div class="bg-gray-800 h-40 w-full rounded-xl mb-4 flex items-center justify-center text-gray-400">
+                                    <div class="bg-gray-200 h-40 w-full rounded-xl mb-4 flex items-center justify-center text-gray-500">
                                         No Image
                                     </div>
                                 @endif
 
                                 <!-- Product Info -->
-                                <h3 class="text-xl text-white font-semibold mb-2">{{ $product->name }}</h3>
-                                <p class="text-gray-300 text-sm mb-4 line-clamp-3">{{ $product->description }}</p>
+                                <h3 class="text-xl font-semibold mb-2">{{ $product->name }}</h3>
+                                <p class="text-gray-700 text-sm mb-4 line-clamp-3">{{ $product->description }}</p>
 
                                 <div class="mt-auto">
-                                    <p class="text-lg text-yellow-500 font-bold mb-2">Ksh {{ number_format($product->price, 2) }}</p>
-                                    <p class="text-sm text-gray-400 mb-4">Stock: {{ $product->stock }}</p>
+                                    <p class="text-lg text-yellow-600 font-bold mb-2">Ksh {{ number_format($product->price, 2) }}</p>
+                                    <p class="text-sm text-gray-500 mb-4">Stock: {{ $product->stock }}</p>
 
-                                    <div class="flex gap-2">
-                                        <button @click="open = true; selectedProduct = {{ $product->id }}"
-                                            class="flex-1 text-center font-bold bg-blue-900 text-white px-4 py-2 rounded-lg hover:opacity-90 transition">
+                                    <!-- FIXED BUTTONS -->
+                                    <div class="flex gap-3">
+                                        <!-- View Details -->
+                                        <button 
+                                            @click="open = true; selectedProduct = {{ $product->id }}"
+                                            class="flex-1 min-w-[120px] text-center font-bold text-gray-900 border border-gray-600 
+                                                   bg-white px-3 py-2 rounded-lg hover:bg-gray-100 hover:border-gray-800 
+                                                   transition-colors duration-300 whitespace-nowrap">
                                             View Details
                                         </button>
-                                        <form method="POST" action="{{ route('cart.add', $product->id) }}">
+
+                                        <!-- Add to Cart -->
+                                        <form method="POST" action="{{ route('cart.add', $product->id) }}" class="flex-1 min-w-[120px]">
                                             @csrf
-                                            <button type="submit" 
-                                                    class="flex-1 text-center font-bold bg-pink-600 text-white px-4 py-2 rounded-lg hover:opacity-90 transition">
+                                            <button type="submit"
+                                                    class="w-full flex items-center justify-center gap-2 font-bold bg-blue-700 text-white 
+                                                           px-3 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap">
+                                                <svg xmlns="http://www.w3.org/2000/svg" 
+                                                     class="w-5 h-5 animate-[vibrate_0.3s_ease-in-out_infinite_alternate]"
+                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" 
+                                                          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m10-9l2 9m-6-9v9"/>
+                                                </svg>
                                                 Add to Cart
                                             </button>
                                         </form>
@@ -123,28 +138,46 @@
         </div>
 
         <!-- Full Page Modal -->
-        <div x-show="open" x-transition.opacity class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
-            <div class="bg-black/90 backdrop-blur-lg p-6 rounded-2xl max-w-md w-full relative flex flex-col">
-                <button @click="open = false" class="absolute top-2 right-2 text-white text-4xl font-bold px-4 py-2 rounded-full hover:bg-white/20 transition bg-gray-800/50">
+        <div x-show="open" x-transition.opacity 
+             class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
+
+            <div class="bg-[#f5f2e9]/95 backdrop-blur-lg text-gray-900 
+                        p-6 rounded-2xl border border-gray-300 max-w-md w-full relative flex flex-col shadow-xl">
+
+                <!-- Close Button -->
+                <button @click="open = false"
+                    class="absolute top-2 right-2 text-gray-700 text-4xl font-bold px-4 py-2 rounded-full 
+                           bg-gray-200 hover:bg-gray-300 transition">
                     &times;
                 </button>
 
+                <!-- Product Details -->
                 <template x-for="product in {{ $products }}" :key="product.id">
                     <div x-show="selectedProduct === product.id" class="flex flex-col">
-                        <img :src="'/storage/' + product.image" alt="" class="rounded-xl mb-4 w-full h-64 object-cover" x-show="product.image">
-                        <div class="bg-gray-800 h-64 w-full rounded-xl mb-4 flex items-center justify-center text-gray-400" x-show="!product.image">
+                        <img :src="'/storage/' + product.image" alt="" 
+                             class="rounded-xl mb-4 w-full h-64 object-cover transition-transform duration-500 hover:scale-105" 
+                             x-show="product.image">
+                        <div class="bg-gray-200 h-64 w-full rounded-xl mb-4 flex items-center justify-center text-gray-500" 
+                             x-show="!product.image">
                             No Image
                         </div>
 
-                        <h3 class="text-2xl font-bold text-white mb-2" x-text="product.name"></h3>
-                        <p class="text-gray-300 mb-4" x-text="product.description"></p>
-                        <p class="text-lg text-yellow-500 font-bold mb-2" x-text="'Ksh ' + product.price.toLocaleString()"></p>
-                        <p class="text-sm text-gray-400 mb-4" x-text="'Stock: ' + product.stock"></p>
+                        <h3 class="text-2xl font-bold mb-2" x-text="product.name"></h3>
+                        <p class="text-gray-700 mb-4" x-text="product.description"></p>
+                        <p class="text-lg text-yellow-700 font-bold mb-2" x-text="'Ksh ' + product.price.toLocaleString()"></p>
+                        <p class="text-sm text-gray-600 mb-4" x-text="'Stock: ' + product.stock"></p>
 
                         <form method="POST" :action="'/cart/' + product.id + '/add'">
                             @csrf
-                            <button type="submit" 
-                                    class="w-full bg-gradient-to-r from-pink-600 to-pink-400 text-white px-4 py-2 rounded-lg hover:opacity-90 transition">
+                            <button type="submit"
+                                    class="w-full flex items-center justify-center gap-2 bg-blue-700 text-white font-bold 
+                                           px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300 whitespace-nowrap">
+                                <svg xmlns="http://www.w3.org/2000/svg" 
+                                     class="w-5 h-5 animate-[vibrate_0.3s_ease-in-out_infinite_alternate]"
+                                     fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" 
+                                          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m10-9l2 9m-6-9v9"/>
+                                </svg>
                                 Add to Cart
                             </button>
                         </form>
@@ -152,6 +185,5 @@
                 </template>
             </div>
         </div>
-
     </div>
 </x-app-layout>

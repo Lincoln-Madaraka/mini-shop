@@ -60,7 +60,7 @@
         <!-- Summary -->
         <div class="bg-black/30 backdrop-blur-lg p-6 rounded-2xl shadow">
             <h3 class="text-lg font-semibold mb-3 text-pink-400">Order Summary</h3>
-            <p class="text-white font-medium">Total: ${{ number_format($order->total, 2) }}</p>
+            <p class="text-white font-medium">Total: KES {{ number_format($order->total, 2) }}</p>
             <p class="text-gray-400">Placed: {{ $order->created_at->format('M d, Y H:i') }}</p>
         </div>
     </div>

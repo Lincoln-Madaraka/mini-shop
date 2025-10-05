@@ -158,3 +158,8 @@ curl -i -X POST "http://127.0.0.1:8000/api/orders" \
 - Returns JSON with order details, user ID, total, and item breakdown
 
 ### Screenshots
+**Top Selling Products**
+This screenshot shows the top 5 products based on total quantity sold.
+![Top 5 Selling Products](TOP5_SELLING_PRODUCTS.png)
+**Total Revenue per Day (Last 7 Days)**
+![Total Revenue](REVENUE_PAST_7_DAYS.png)

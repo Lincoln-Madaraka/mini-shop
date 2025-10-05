@@ -169,4 +169,4 @@ Displays each customer’s total number of orders and lifetime spend.
 ![TOTAL SPEND](customer_lifestime_spend.png)
 
 ### Visual Cards 
-Video Demo: 
+Video Demo: https://drive.google.com/file/d/1gsKXa-P8aqc1owIYReZRndzBgT5y74FS/view

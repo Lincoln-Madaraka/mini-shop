@@ -52,7 +52,7 @@ DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
 DB_DATABASE=minishop
-DB_USERNAME=postgres
+DB_USERNAME=postgres/<if-different-change>
 DB_PASSWORD=<your-db-password>
 ```
 
@@ -117,3 +117,45 @@ minishop/
 ├── tailwind.config.js      # Optional styling
 └── README.md
 ```
+### Usage
+**Frontend**
+1. Log in as Admin:
+```bash
+Email: admin@demo.com
+Password: password
+```
+2. Manage products, users, and orders
+
+Log in as Customer:
+
+Email: customer@demo.com
+
+Password: password
+
+Browse catalog, add products to cart, checkout
+
+API
+GET Products
+curl -i http://127.0.0.1:8000/api/products
+
+
+Returns JSON list of all products with id, name, price, stock, and description.
+
+POST Orders
+curl -i -X POST "http://127.0.0.1:8000/api/orders" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer <your-token>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "items": [
+      {"product_id":1,"qty":2},
+      {"product_id":3,"qty":1}
+    ]
+  }'
+
+
+Requires a Sanctum token for authentication
+
+Returns JSON with order details, user ID, total, and item breakdown
+
+Screenshots

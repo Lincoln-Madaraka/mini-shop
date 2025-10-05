@@ -14,9 +14,8 @@
 5. [Usage](#usage)
    - [Frontend](#frontend)
    - [API](#api)
-6. [Screenshots](#screenshots)
-7. [SQL Queries](#sql-queries)
-8. [Optional Live Demo](#optional-live-demo)
+6. [Screenshots for SQL Queries](#screenshots)
+7. [Video Demo](#visual)
 
 ---
 
@@ -168,5 +167,5 @@ Shows total revenue per day including days with no orders.
 Displays each customer’s total number of orders and lifetime spend.
 ![TOTAL SPEND](customer_lifestime_spend.png)
 
-### Visual Cards 
+### Visual
 Video Demo: https://drive.google.com/file/d/1gsKXa-P8aqc1owIYReZRndzBgT5y74FS/view

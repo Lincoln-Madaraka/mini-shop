@@ -41,7 +41,6 @@
             </nav>
         </header>
 
-        <!-- Page Content -->
         <main class="flex-1 flex flex-col justify-center items-center px-6">
             {{ $slot }}
         </main>

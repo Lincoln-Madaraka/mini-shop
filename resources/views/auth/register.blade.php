@@ -59,7 +59,7 @@
             </div>
 
             <!-- Register Button -->
-            <x-primary-button class="w-full text-center bg-pink-400 text-black px-4 py-2 rounded-lg hover:bg-pink-500">
+            <x-primary-button class="w-full text-center bg-blue-800 text-black px-4 py-2 rounded-lg hover:bg-pink-500">
                 {{ __('Register') }}
             </x-primary-button>
         </form>

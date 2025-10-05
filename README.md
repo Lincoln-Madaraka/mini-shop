@@ -162,4 +162,8 @@ curl -i -X POST "http://127.0.0.1:8000/api/orders" \
 This screenshot shows the top 5 products based on total quantity sold.
 ![Top 5 Selling Products](TOP5_SELLING_PRODUCTS.png)
 **Total Revenue per Day (Last 7 Days)**
+Shows total revenue per day including days with no orders.
 ![Total Revenue](REVENUE_PAST_7_DAYS.png)
+**Customer Orders & Lifetime Spend**
+Displays each customer’s total number of orders and lifetime spend.
+![alt text](<CUSTOMER ORDERS AND LIFESTIME SPEND-1.png>)

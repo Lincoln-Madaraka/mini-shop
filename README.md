@@ -169,7 +169,4 @@ Displays each customer’s total number of orders and lifetime spend.
 ![TOTAL SPEND](customer_lifestime_spend.png)
 
 ### Visual Cards 
-Admin Dashboard
-![Admin Dash](ADMIN.png)
-Admin Dashboard Mobile 
-![Admin Dash Mobile](ADMIN_DASH_MOBILE.png)
+Video Demo: 

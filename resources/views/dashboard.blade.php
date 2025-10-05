@@ -80,7 +80,7 @@
                                 <p class="text-gray-700 text-sm mb-4 line-clamp-3">{{ $product->description }}</p>
 
                                 <div class="mt-auto">
-                                    <p class="text-lg text-yellow-600 font-bold mb-2">Ksh {{ number_format($product->price, 2) }}</p>
+                                    <p class="text-lg text-red-600 font-bold mb-2">Ksh {{ number_format($product->price, 2) }}</p>
                                     <p class="text-sm text-gray-500 mb-4">Stock: {{ $product->stock }}</p>
 
                                     <!-- FIXED BUTTONS -->
@@ -164,7 +164,7 @@
 
                         <h3 class="text-2xl font-bold mb-2" x-text="product.name"></h3>
                         <p class="text-gray-700 mb-4" x-text="product.description"></p>
-                        <p class="text-lg text-yellow-700 font-bold mb-2" x-text="'Ksh ' + product.price.toLocaleString()"></p>
+                        <p class="text-lg text-red-600 font-bold mb-2" x-text="'Ksh ' + product.price.toLocaleString()"></p>
                         <p class="text-sm text-gray-600 mb-4" x-text="'Stock: ' + product.stock"></p>
 
                         <form method="POST" :action="'/cart/' + product.id + '/add'">

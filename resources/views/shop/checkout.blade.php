@@ -95,21 +95,25 @@
                 <p class="text-center text-gray-600 mb-4">Your order has been placed successfully. Here’s your summary:</p>
 
                 {{-- 📦 Ordered Items --}}
-                <div class="flex flex-col gap-3 mb-4 max-h-64 overflow-y-auto">
-                    @foreach($orderItems as $item)
-                        <div class="flex items-center gap-3 bg-gray-50 rounded-lg p-3 shadow-sm hover:shadow-md transition">
-                            <img src="{{ $item['image'] ? asset('storage/'.$item['image']) : asset('images/no-image.png') }}" 
-                                 class="w-16 h-16 object-cover rounded-lg" alt="">
-                            <div>
-                                <p class="font-semibold text-gray-800">{{ $item['name'] }}</p>
-                                <p class="text-gray-600 text-sm">{{ $item['description'] ?? '' }}</p>
-                                <p class="text-gray-700 text-sm">Qty: {{ $item['quantity'] }}</p>
-                                <p class="text-blue-700 font-bold text-sm">Ksh {{ number_format($item['price'] * $item['quantity'], 2) }}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+            <div class="flex flex-col gap-3 mb-4 max-h-64 overflow-y-auto">
+    @php $total = 0; @endphp
 
+    @foreach($orderItems as $item)
+        @php $total += $item['price'] * $item['quantity']; @endphp
+
+        <div class="flex items-center gap-3 bg-gray-50 rounded-lg p-3 shadow-sm hover:shadow-md transition">
+            <img src="{{ $item['image'] ? asset('storage/'.$item['image']) : asset('images/no-image.png') }}" 
+                 class="w-16 h-16 object-cover rounded-lg" alt="">
+            <div>
+                <p class="font-semibold text-gray-800">{{ $item['name'] }}</p>
+                <p class="text-gray-600 text-sm">{{ $item['description'] ?? '' }}</p>
+                <p class="text-gray-700 text-sm">Qty: {{ $item['quantity'] }}</p>
+                <p class="text-blue-700 font-bold text-sm">Ksh {{ number_format($item['price'] * $item['quantity'], 2) }}</p>
+            </div>
+        </div>
+    @endforeach
+</div>
+   
                 {{-- Total & Order ID --}}
                 <div class="border-t border-gray-300 pt-3 text-sm">
                     <p><span class="font-semibold">Order ID:</span> {{ session('order_id') ?? 'ORD-' . rand(10000,99999) }}</p>

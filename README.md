@@ -70,6 +70,7 @@ php artisan serve
 ```bash
 Users
 Role	    Email	               Password
+
 Admin	    admin@demo.com       password
 
 Customer	customer@demo.com    password
@@ -78,3 +79,41 @@ Customer	customer@demo.com    password
 - There are some sample products seeded using ProductSeeder.php
 - Images stored in public/import/assets
 - Products include snacks, electronics, beverages, and detergents
+
+### Folder Structure and Brief Description(Main Folders in key)
+```bash
+minishop/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Admin/      # Admin CRUD: products, users, orders
+│   │   │   ├── Api/        # ProductController.php: GET /api/products
+│   │   │   │                # OrderController.php: POST /api/orders
+│   │   │   ├── Auth/       # Breeze authentication controllers
+│   │   │   └── Shop/       # Customer shopping: CartController.php, CheckoutController.php, OrderController.php, ProductController.php
+│   │   ├── Middleware/     # Role-based access control
+│   │   └── Requests/       # Validation rules for forms
+│   ├── Models/
+│   │   ├── User.php        # User roles and authentication
+│   │   ├── Role.php        # Role constants/logic
+│   │   ├── Product.php     # Product logic and stock
+│   │   ├── Order.php       # Orders table
+│   │   └── OrderItem.php   # Individual order items
+├── database/
+│   ├── migrations/         # Database tables: users, products, orders, order_items
+│   └── seeders/            # DatabaseSeeder.php: seeds users
+│                            # ProductSeeder.php: seeds products
+├── resources/views/        # Blade templates
+│   ├── admin/              # Admin panel pages
+│   ├── auth/               # Login/Register
+│   ├── shop/               # Customer catalog, cart, checkout
+│   └── layouts/            # Base layouts
+├── routes/
+│   ├── web.php             # Web routes
+│   └── api.php             # API routes: GET /api/products, POST /api/orders
+├── public/                 # Entry point, product images
+├── artisan                 # Laravel CLI
+├── composer.json           # PHP dependencies
+├── tailwind.config.js      # Optional styling
+└── README.md
+```

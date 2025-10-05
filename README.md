@@ -167,3 +167,9 @@ Shows total revenue per day including days with no orders.
 **Customer Orders & Lifetime Spend**
 Displays each customer’s total number of orders and lifetime spend.
 ![TOTAL SPEND](customer_lifestime_spend.png)
+
+### Visual Cards 
+Admin Dashboard
+![Admin Dash](ADMIN.png)
+Admin Dashboard Mobile 
+![Admin Dash Mobile](ADMIN_DASH_MOBILE.png)

@@ -1,189 +1,80 @@
+# Mini Shop Lite — Laravel Full-Stack Assessment
 
-Project Tree - My Key Folders & Files
-```bash
-                minishop/
-                ├── app/
-                │   ├── Http/
-                │   │   ├── Controllers/
-                │   │   │   ├── Admin/          # Admin CRUD: products, users, orders
-                │   │   │   ├── Auth/           # Login/Register controllers (Breeze)
-                │   │   │   └── Shop/           # Customer shop/cart/checkout files 
-                │   │   │       ├── CartController.php       # Add/remove items from session cart
-                │   │   │       ├── CheckoutController.php   # Handles checkout, order creation
-                │   │   │       ├── OrderController.php      # Customer order view/API
-                │   │   │       └── ProductController.php    # Product listing/detail/API
-                │   │   ├── Middleware/         # Role-based auth (Admin vs Customer)
-                │   │   └── Requests/           # FormRequests for validation
-                │   ├── Models/
-                │   │   ├── User.php             # Users table & roles
-                │   │   ├── Role.php             # Role constants/logic
-                │   │   ├── Product.php          # Products table & stock logic
-                │   │   ├── Order.php            # Orders table
-                │   │   └── OrderItem.php        # OrderItems table
-                ├── database/
-                │   ├── migrations/             # Tables: users, products, orders, order_items
-                │   └── seeders/                # Demo users and sample products
-                ├── resources/views/
-                │   ├── admin/                  # Admin panel Blade templates (CRUD pages)
-                │   ├── auth/                   # Auth pages (login, register)
-                │   ├── shop/                   # Customer catalog, cart, checkout pages
-                │   └── layouts/                # App & guest layouts, navigation
-                ├── routes/
-                │   ├── web.php                 # Web routes for Blade pages
-                │   └── api.php                 # API routes: GET /api/products, POST /api/orders
-                ├── public/
-                │   └── index.php               # Entry point
-                ├── artisan                     # CLI tool
-                ├── composer.json               # PHP dependencies
-                ├── tailwind.config.js          # Tailwind optional styling
-                └── README.md
-                ```
-
-# Mini Shop Lite
-
-**Laravel FullStack Internship Assessment — Red Giant**
-
-A minimal e-commerce skeleton built with **Laravel 10/11** demonstrating full■stack capabilities: authentication, authorization, database modeling, REST APIs, and Blade UI. Admin manages products, customers browse, add to cart, and checkout.
+**Author:** Lincoln Madaraka  
+**Role:** Red Giant Laravel Full-Stack Intern Assessment  
+**Due:** Sunday, Oct 5, 2025 at 5:00 pm (EAT)
 
 ---
 
 ## Table of Contents
-1. [Project Context](#project-context)  
-2. [Tech Stack](#tech-stack)  
-3. [Features](#features)  
-4. [Setup & Installation](#setup--installation)  
-5. [Demo Users & Sample Data](#demo-users--sample-data)  
-6. [API Endpoints](#api-endpoints)  
-7. [Database Schema](#database-schema)  
-8. [SQL Mini-Test](#sql-mini-test)  
-9. [Usage / Screenshots](#usage--screenshots)  
-10. [Optional Enhancements](#optional-enhancements)  
-
-## Project Context
-Mini Shop Lite is a compact Laravel app designed to test **full■stack skills**:
-- **Admin:** CRUD for products  
-- **Customer:** Browse products, manage cart, checkout creating orders  
-- **API:** Public product list and authenticated order creation  
-- **Validation & Authorization:** Using Form Requests & Policies  
-
----
-```
-## Tech Stack
-- **Backend:** Laravel 10/11, Eloquent ORM, Laravel Breeze  
-- **Frontend:** Blade, Tailwind CSS 
-- **Database:** MySQL / MariaDB  
-- **API Testing:** Postman / Insomnia  
+1. [Project Overview](#project-overview)
+2. [Setup Instructions](#setup-instructions)
+3. [Seeded Users & Products](#seeded-users--products)
+4. [File Structure & Description](#file-structure--description)
+5. [Usage](#usage)
+   - [Frontend](#frontend)
+   - [API](#api)
+6. [Screenshots](#screenshots)
+7. [SQL Queries](#sql-queries)
+8. [Optional Live Demo](#optional-live-demo)
 
 ---
 
-## Features
+## Project Overview
 
-### Admin
-- List, create, edit, delete products  
-- Server-side validation for product fields  
-- Role-based access via Policies / Middleware  
+Mini Shop Lite is a **Laravel 10/11 full-stack application** that allows:
 
-### Customer
-- Browse product catalog & view details  
-- Add/remove items in session-based cart  
-- Checkout creates Order + OrderItems, reduces stock  
-- Simple order summary page  
+- **Admin:** manage products, view orders, manage users.  
+- **Customer:** browse products, add to cart, checkout, view orders.  
+- **API Endpoints:** public `GET /api/products` and authenticated `POST /api/orders`.  
+- **Validation:** clean input validation, proper error handling, and stock management.  
+- **Frontend:** Blade templates with Tailwind CSS for responsive and clean UI.  
 
-### API
-- `GET /api/products` → returns all products (public)  
-- `POST /api/orders` → create order (authenticated)  
-  ```json
-  {
-    "items": [
-      { "product_id": 1, "qty": 2 },
-      { "product_id": 5, "qty": 1 }
-    ]
-  }
-Returns created order JSON with totals.
+---
 
-Setup & Installation
-Clone the repo:
+## Setup Instructions
 
-bash
-Copy code
-git clone https://github.com/Lincoln-Madaraka/mini-shop-lite.git
-cd mini-shop-lite
-Install dependencies:
+1. Clone the repo:
 
 ```bash
-Copy code
+git clone https://github.com/Lincoln-Madaraka/mini-shop.git
+cd mini-shop
+```
+2. Install dependencies:
+```bash
 composer install
 npm install
 npm run dev
-Configure environment:
 ```
-
+3. Create .env file (copy .env.example) and set database connection:
 ```bash
-Copy code
-cp .env.example .env
-php artisan key:generate
-Update .env with your DB credentials
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=minishop
+DB_USERNAME=postgres
+DB_PASSWORD=<your-db-password>
 ```
 
-### Migrate and seed the database:
-
+4. Run migrations and seeders:
 ```bash
 php artisan migrate:fresh --seed
-Serve the application:
 ```
+5. Serve the app locally:
 ```bash
 php artisan serve
-Demo Users & Sample Data
-Role	Email	Password
-Admin	admin@demo.com	password
-Customer	customer@demo.com	password
 ```
-Sample products included for quick testing.
+6. Access at http://127.0.0.1:8000
 
-Database Schema
-users: id, name, email, password, role (admin/customer)
+7. Seeded Users & Products
+```bash
+Users
+Role	    Email	               Password
+Admin	    admin@demo.com       password
 
-products: id, name, price, stock, description
-
-orders: id, user_id, total, created_at
-
-order_items: id, order_id, product_id, qty, unit_price, line_total
-
-SQL Mini-Test
-Top 5 best-selling products by quantity
-
-sql
-SELECT p.name, SUM(oi.qty) AS total_qty
-FROM order_items oi
-JOIN products p ON oi.product_id = p.id
-GROUP BY p.name
-ORDER BY total_qty DESC
-LIMIT 5;
-Total revenue per day (last 7 days)
-
-sql
-SELECT DATE(o.created_at) AS order_date,
-       COALESCE(SUM(o.total), 0) AS revenue
-FROM orders o
-WHERE o.created_at >= CURDATE() - INTERVAL 7 DAY
-GROUP BY order_date
-ORDER BY order_date;
-Per customer: number of orders and lifetime spend
-
-sql
-SELECT u.name, COUNT(o.id) AS orders_count, COALESCE(SUM(o.total),0) AS lifetime_spend
-FROM users u
-LEFT JOIN orders o ON u.id = o.user_id
-GROUP BY u.name;
-Screenshots of queries/results should be included in a /screenshots folder.
-
-Usage / Screenshots
-Admin dashboard: product CRUD
-
-Customer catalog & cart
-
-Checkout flow
-
-API demo in Postman
-
-
+Customer	customer@demo.com    password
+```
+8. Products
+- There are some sample products seeded using ProductSeeder.php
+- Images stored in public/import/assets
+- Products include snacks, electronics, beverages, and detergents

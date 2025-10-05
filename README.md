@@ -166,4 +166,4 @@ Shows total revenue per day including days with no orders.
 ![Total Revenue](REVENUE_PAST_7_DAYS.png)
 **Customer Orders & Lifetime Spend**
 Displays each customer’s total number of orders and lifetime spend.
-![alt text](<CUSTOMER ORDERS AND LIFESTIME SPEND-1.png>)
+![TOTAL SPEND](customer_lifestime_spend.png)
